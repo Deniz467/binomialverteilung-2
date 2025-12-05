@@ -1,0 +1,120 @@
+---
+title: "Binomialverteilung"
+description: "Wahrscheinlichkeits "
+---
+
+import {OverviewCard} from "../../../../components/OverviewCard";
+import {Callout} from "fumadocs-ui/components/callout";
+import TestAccordion from "../../../../components/TestAccordion";
+import {IconAndText} from "../../../../components/IconAndText";
+import {Accordion} from "@heroui/react";
+import {Dice1, Dices} from "lucide-react";
+
+
+
+<OverviewCard>
+  - Bestimmt die Anzahl von Erfolgen in $n$ unabhängigen Bernoulli-Versuchen
+  - Zwei Ergebnisse pro Versuch: Erfolg oder Misserfolg
+  - Erfolgswahrscheinlichkeit bleibt immer gleich
+  - Einzelwahrscheinlichkeit: $\binom{n}{k} \cdot p^k \cdot (1-p)^{n - k}$
+  - Erwartungswert: $E(X) = n \cdot p$
+</OverviewCard>
+
+## Was ist eine Binomialverteilung?
+
+Die **Binomialverteilung** beschreibt die Wahrscheinlichkeiten dafür, wie oft ein bestimmtes
+Ereignis (der „Erfolg“) in einer festen Anzahl von gleichartigen und unabhängigen
+Zufallsexperimenten auftritt.
+
+Betrachtet wird dabei eine Folge von Experimenten, bei denen es immer nur zwei mögliche Ausgänge
+gibt: Erfolg oder Misserfolg.
+Die Wahrscheinlichkeit für einen Erfolg beträgt in jedem einzelnen Versuch $p$ und bleibt bei
+allen Wiederholungen gleich.
+Die zugehörige Zufallsvariable $X$ zählt dann, wie viele Erfolge in den $n$ Versuchen vorkommen.
+
+Da nur bestimmte, zählbare Werte wie $0,1,2, \dots, n$ möglich sind, handelt es sich um eine
+**diskrete Wahrscheinlichkeitsverteilung**.
+Ein typisches Beispiel ist das mehrmalige Werfen einer Münze oder eines Würfels.
+
+
+<Callout type="info" title="Formel">
+  $$ \binom{n}{k} \cdot p^k \cdot (1-p)^{\,n-k}$$
+
+  Diese Formel gibt die Wahrscheinlichkeit dafür an, dass in $n$ Versuchen genau $k$ Erfolge
+  auftreten.
+  Dabei ist
+  - $n$ die Größe der Stichprobe,
+  - $p$ die Erfolgswahrscheinlichkeit des Ereignisses,
+  - $k$ die Anzahl der Erfolge im Zufallsexperiment,
+  - und $\binom{n}{k}$ der Binomialkoeffizient.
+</Callout>
+
+## Formeln
+
+<Accordion allowsMultipleExpanded className="fd-content mx-auto w-full max-w-3xl"
+           variant="surface">
+  <Accordion.Item>
+    <Accordion.Heading className="not-prose">
+      <Accordion.Trigger className="flex items-center gap-2">
+        <IconAndText icon={<Dice1 />} text="Einzelwahrscheinlichkeit"/>
+        <Accordion.Indicator/>
+      </Accordion.Trigger>
+    </Accordion.Heading>
+    <Accordion.Panel>
+      <Accordion.Body>
+        Die Wahrscheinlichkeit, in $n$ unabhängigen Versuchen **genau** $k$ Erfolge zu erzielen,
+        lautet:
+
+        $$
+        P(X = k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{\,n-k}.
+        $$
+
+        Die Formel setzt sich aus mehreren Teilen zusammen:\
+        Der Binomialkoeffizient $\binom{n}{k}$ zählt, auf wie viele verschiedene Arten die $k$
+        Erfolge
+        innerhalb der $n$ Versuche angeordnet sein können.\
+        Der Term $p^k$ beschreibt die Wahrscheinlichkeit dafür, dass genau diese $k$ Erfolge
+        eintreten,
+        und $(1-p)^{\,n-k}$ steht für die Wahrscheinlichkeit der restlichen Misserfolge.
+      </Accordion.Body>
+    </Accordion.Panel>
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Heading className="not-prose">
+      <Accordion.Trigger>
+        <IconAndText icon={<Dices />} text="Kumulierte Wahrscheinlichkeit"/>
+        <Accordion.Indicator/>
+      </Accordion.Trigger>
+    </Accordion.Heading>
+    <Accordion.Panel>
+      <Accordion.Body>
+        Oft interessiert man sich nicht nur für genau $k$ Erfolge, sondern dafür, dass **höchstens**
+        $k$
+        Erfolge auftreten. Diese kumulierte Wahrscheinlichkeit ergibt sich aus der Summe aller
+        Einzelwahrscheinlichkeiten von $0$ bis $k$:
+
+        $$
+        P(X \le k) = \sum_{i = 0}^{k} \binom{n}{i} p^i (1-p)^{\,n-i}.
+        $$
+
+        Damit wird jede mögliche Anzahl an Erfolgen berücksichtigt, die kleiner oder gleich der
+        gewünschten Obergrenze $k$ ist.
+      </Accordion.Body>
+    </Accordion.Panel>
+  </Accordion.Item>
+</Accordion>
+
+
+## Erwartungswert
+
+Der **Erwartungswert** einer binomialverteilten Zufallsvariable beschreibt den durchschnittlichen
+Wert, welcher bei sehr vielen Wiederholungen des gesamten Experiments erwartet wird.
+
+Da es in jedem der $n$ Versuche mit Wahrscheinlichkeit $p$ zu einem Erfolg kommt, ergibt sich der
+Erwartungswert ganz einfach zu:
+
+$$
+\boxed{
+\mu = E(X) = n \cdot p
+}
+$$

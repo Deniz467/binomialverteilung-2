@@ -1,0 +1,39 @@
+## Was ist eine Binomialverteilung?
+
+- Sie ist eine <Tooltip tip="Eine diskrete Wahrscheinlichkeitsverteilung beschreibt die Wahrscheinlichkeiten für zählbare, also nicht-kontinuierliche Werte einer Zufallsvariable, wie zum Beispiel das Ergebnis eines Würfelwurfs (1 bis 6). Im Gegensatz zu stetigen Verteilungen, bei denen beliebige Werte in einem Intervall möglich sind, kann die Zufallsvariable bei einer diskreten Verteilung nur bestimmte, einzelne Werte annehmen.">diskrete Wahrscheinlichkeitsverteilung</Tooltip>
+- Man betrachtet eine Serie von **unabhängigen Zufallsexperimenten**, bei denen:
+- Es nur **zwei mögliche Ergebnisse** gibt: Erfolg oder Misserfolg
+- Die **Erfolgswahrscheinlichkeit** in jedem Experiment gleich ist
+- Die Zufallsvariable zählt, wie viele Erfolge in einer bestimmten Anzahl von Versuchen auftreten
+
+## Formeln
+<Accordion title="Einzelwahrscheinlichkeit" description="Bei n Versuchen genau k Erfolge"
+icon="dice-one">
+Die Wahrscheinlich, bei $n$ Versuchen genau $k$ Erfolge zu erzielen, lautet:
+
+$$
+P(X=k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n - k}
+$$
+
+- $n$: Anzahl der Versuche
+- $p$: Erfolgswahrscheinlichkeit des Ereignisses
+- $k$: Anzahl der Erfolge im Zufallsexperiment
+- $\binom{n}{k}$: Anzahl der Möglichkeiten, $k$ Erfolge in $n$ Versuchen anzuordnen
+- $p^k$: Wahrscheinlichkeit für $k$ Erfolge
+- $(1-p)^{n - k}$: Wahrscheinlichkeit für die restlichen Misserfolge
+  </Accordion>
+
+<Accordion title="Kumulierte Wahrscheinlichkeit" description="Bei n Versuchen höchstens k Erfolge"
+icon="dice">
+$$
+P(X\leq k) = \sum ^ {k _ \text{Obergrenze}} _ {i = 0}\binom{n}{i}p^i(1-p)^{n - i}
+$$
+
+- $n$: Anzahl der Versuche
+- $p$: Erfolgswahrscheinlichkeit des Ereignisses
+- $k _ {\text{Obergrenze}}$: Obergrenze der gezählten Erfolge
+- $\sum ^k _ {i = 0}\binom{n}{i}$: Anzahl der Möglichkeiten, $k$ Erfolge in $n$ Versuchen
+  anzuordnen, für alle $k$, bis zur Obergrenze
+- $p^k$: Wahrscheinlichkeit für $k$ Erfolge
+- $(1-p)^{n - k}$: Wahrscheinlichkeit für die restlichen Misserfolge
+  </Accordion>

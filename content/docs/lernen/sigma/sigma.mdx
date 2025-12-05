@@ -1,0 +1,46 @@
+---
+title: Sigma-Regeln
+description: Description of your new file.
+---
+
+import {SigmaGraph} from "../../../../components/SigmaGraph";
+import {Callout} from "fumadocs-ui/components/callout";
+
+<SigmaGraph />
+
+## Was bedeuten die Sigma-Regeln?
+
+Die **Sigma-Regeln** beschreiben, wie groß der Anteil der Gesamtwahrscheinlichkeit ist,
+der bei einer **normalverteilten** Zufallsvariable innerhalb bestimmter Abstände
+vom [Erwartungswert](/binomialverteilung#erwartungswert) liegt.
+Der Erwartungswert wird dabei mit $\mu$ bezeichnet, die Standardabweichung mit $\sigma$.
+
+Die Standardabweichung $\sigma$ misst, wie stark die Werte im Durchschnitt vom Mittelwert abweichen.
+Sie bestimmt also, wie „breit“ oder „schmal“ die Normalverteilung ist.
+
+## Die Sigma-Regeln im Überblick
+
+Die folgenden drei Aussagen gelten für **jede** normalverteilte Zufallsvariable:
+
+<Callout type="info" title="Sigma-Regeln">
+  - $P(\mu - \sigma \le X \le \mu + \sigma) \approx 68,3\% $
+  - $P(\mu - 2\sigma \le X \le \mu + 2\sigma) \approx 95,4\%$
+  - $P(\mu - 3\sigma \le X \le \mu + 3\sigma) \approx 99,7\%$
+
+  $\mu$ = Erwartungswert (Mittelwert)\
+  $\sigma$ = Standardabweichung
+
+</Callout>
+
+## Bedeutung der Regeln
+
+Die Sigma-Regeln zeigen, wie konzentriert die Werte einer normalverteilten Zufallsvariable um
+den Mittelwert liegen:
+
+- Im Bereich **eine Standardabweichung um den Mittelwert** liegen etwa **zwei Drittel aller Werte**.
+- Bei **zwei Standardabweichungen** sind es schon **fast alle Werte**.
+- Bei **drei Standardabweichungen** wird **praktisch die gesamte Verteilung** erfasst, da nur noch
+extrem seltene Werte außerhalb liegen.
+
+Damit eignen sich die Sigma-Regeln hervorragend, um schnell einzuschätzen, wie ungewöhnlich ein
+bestimmter Wert in einer Normalverteilung ist.

@@ -1,0 +1,322 @@
+---
+title: "Naturpark Touristen"
+description: "S. 178"
+---
+import {Step, Steps} from "fumadocs-ui/components/steps";
+import {Callout} from "fumadocs-ui/components/callout";
+import Image from "next/image";
+import {Accordion} from "@heroui/react";
+import {Mermaid} from "../../../../components/mdx/mermaid";
+
+
+
+Unter den Touristen eines Naturparks nutzen erfahrungsgemäß $14 \, \%$ das Fahrrad für Ausflüge vor Ort.
+Im Folgenden werden diese Touristen als Radausflügler bezeichnet. Es soll davon ausgegangen werden,
+dass in einer zufälligen Auswahl von Touristen des Naturparks die Anzahl der Radausflügler
+binomialverteilt ist.
+
+Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt.
+
+<Accordion className="fd-content mx-auto w-full max-w-3xl" variant="surface">
+  <Accordion.Item>
+    <Accordion.Heading className="not-prose">
+      <Accordion.Trigger>
+        Aufgabe A
+        <Accordion.Indicator/>
+      </Accordion.Trigger>
+    </Accordion.Heading>
+    <Accordion.Panel>
+      <Accordion.Body>
+        <blockquote>
+          Bestimmen Sie die Wahrscheinlichkeit dafür, dass sich in der Stichprobe genau $36$
+          Radausflügler befinden.
+        </blockquote>
+
+        <Steps>
+          <Step>
+
+            ### Ansatz
+            [Einzelwahrscheinlichkeit](/binomialverteilung#einzelwahrscheinlichkeit) berechnen.
+
+            **Gegeben**:
+
+            $$
+            \begin{alignedat}{1}
+            n &= 300 \\
+            p &= 0.14 \\
+            k &= 36
+            \end{alignedat}
+            $$
+
+          </Step>
+          <Step>
+            ### Mit CAS berechnen
+
+            <Callout type="idea" title="Taschenrechnerbefehl">
+              1. $\boxed{\text{menu}}$
+              2. Wahrscheinlichkeit (5)
+              3. Verteilung (5)
+              4. Binomial Pdf (A)
+            </Callout>
+
+            <Image
+                src="/images/examples/naturparktouristen/calc-einzel.png"
+                width={800}
+                height={450}
+                alt="Taschenrechner eingabe für Binom Pdf"
+            />
+
+            $\boxed{binomPdf(300, 0.14, 36) \approx 0.042}$
+          </Step>
+          <Step>
+            ### Antwort
+
+            <Callout type="success">
+              Die Wahrscheinlichkeit dafür, dass sich in der Stichprobe genau $36$ Radausflügler
+              befinden beträgt ungefähr $4,2 \, \%$.
+            </Callout>
+          </Step>
+        </Steps>
+      </Accordion.Body>
+    </Accordion.Panel>
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Heading className="not-prose">
+      <Accordion.Trigger>
+        Aufgabe B
+        <Accordion.Indicator/>
+      </Accordion.Trigger>
+    </Accordion.Heading>
+    <Accordion.Panel>
+      <Accordion.Body>
+        <blockquote>
+          Ermitteln Sie die Wahrscheinlichkeit dafür, dass die Anzahl der Radausflügler in der
+          Stichprobe um mindestens $10 \, \%$ größer ist als der Erwartungswert für diese Anzahl.
+        </blockquote>
+
+        <Steps>
+          <Step>
+            ### Erwartungswert berechnen
+            Berechne den [Erwartungswert](/binomialverteilung#erwartungswert) mit den gegeben
+            Werten:
+
+            $$E(X)= n \cdot p = 300 \cdot 0.14 = 42$$
+          </Step>
+          <Step>
+            ### Schwellwert berechnen
+            Da wir mindestens $10 \, \%$ mehr über dem zu erwartenden Wert liegen wollen, berechnen
+            wir:
+
+            $$
+            1.10 \cdot 42 = 46.2
+            $$
+          </Step>
+          <Step>
+            ### Schwellwert aufrunden
+            Da $X$ lediglich ganzzahlig sein kann, gilt $46.2 \Rightarrow 47$ (Es gibt keine halben
+            Personen).
+          </Step>
+          <Step>
+            ### Kumulierte Wahrscheinlichkeit berechnen
+
+            Nun müssen wir die [kumulierte
+            Wahrscheinlichkeit](/binomialverteilung#kumulierte-wahrscheinlichkeit) berechnen.
+
+            **Gegeben**:
+
+            $$
+            \begin{alignedat}{1}
+            n &= 300 \\
+            p &= 0.14 \\
+            n &\geq k \geq 47
+
+            \end{alignedat}
+            $$
+
+            **In Formel einsetzen**
+
+            $$
+            P(X \leq 47) = \sum ^ {300} _ {i = 47} \binom {300}{i} \cdot 0.14 ^i \cdot (1-0.14)
+            ^{300
+              - i}
+            $$
+
+            <Callout type="idea" title="Taschenrechnerbefehl">
+              1. $\boxed{\text{menu}}$
+              2. Wahrscheinlichkeit (5)
+              3. Verteilung (5)
+              4. Binomial Cdf (B)
+            </Callout>
+
+            <Image
+                src="/images/examples/naturparktouristen/calc-kumuliert.png"
+                width={800}
+                height={450}
+                alt="Taschenrechner eingabe für Binom Cdf"
+            />
+
+            $\boxed{binomCdf(300, 0.14, 47, 300) \approx 0,2243}$
+          </Step>
+          <Step>
+            ### Antwort
+
+            <Callout type="success">
+              Die Wahrscheinlichkeit dafür, dass die Anzahl der Radausflügler in der Stichprobe um
+              mindestens $10 \, \%$ größer als der Erwartungswert für diese Anzahl ist, beträgt
+              ungefähr
+              $22.43\, \%$.
+            </Callout>
+          </Step>
+        </Steps>
+      </Accordion.Body>
+    </Accordion.Panel>
+  </Accordion.Item>
+
+</Accordion>
+
+
+Um den Naturpark als Reiseziel attraktiver zu machen, setzt der dortige Tourismusverband Shuttelbusse
+ein. Die Fahrkarten dür diese Busse können ausschließlich online gebucht werden und sind jeweils für
+einen bestimmten Tag gültig. Erfahrungsgemäß werden $80\,\%$ aller gebuchter Fahrkarten spätestens
+am Vortag der Fahrt gebucht. Von diesen spätestens am Vortag gebuchten Fahrkarten werden $90\,\%$
+auch täglich genutzt. Bei den restlichen, erst am Tag der Fahrt gebuchten Fahrkarten liegt der
+Anteil mit $95\,\%$ % etwas höher.
+
+<Accordion className="fd-content mx-auto w-full max-w-3xl" variant="surface">
+  <Accordion.Item>
+    <Accordion.Heading className="not-prose">
+      <Accordion.Trigger>
+        Aufgabe C
+        <Accordion.Indicator/>
+      </Accordion.Trigger>
+    </Accordion.Heading>
+    <Accordion.Panel>
+      <Accordion.Body>
+        > Stellen Sie den Sachverhalt in einem beschrifteten Baumdiagramm dar.
+
+        <Mermaid
+            chart="
+            graph LR
+            classDef green fill:#b7f7c5,stroke:#2e8b57,stroke-width:2px,color:#000,font-weight:bold;
+
+            Start((Start)):::green
+
+            Start -->|0.80| BV[Spätestens am Vortag<br>gebucht]:::green
+            Start -->|0.20| BT[Am Tag der Fahrt<br>gebucht]:::green
+
+            BV -->|0.90| BV_G[genutzt<br>0.72]:::green
+            BV -->|0.10| BV_N[nicht genutzt<br>0.08]:::green
+
+            BT -->|0.95| BT_G[genutzt<br>0.19]:::green
+            BT -->|0.05| BT_N[nicht genutzt<br>0.01]:::green
+            "
+        />
+
+      </Accordion.Body>
+    </Accordion.Panel>
+  </Accordion.Item>
+  <Accordion.Item>
+    <Accordion.Heading className="not-prose">
+      <Accordion.Trigger>
+        Aufgabe D
+        <Accordion.Indicator/>
+      </Accordion.Trigger>
+    </Accordion.Heading>
+    <Accordion.Panel>
+      <Accordion.Body>
+        > Betrachtet wird eine zufällig ausgewählte, nicht genutzte Fahrkarte. Beurteilen Sie die
+        folgende Aussage:
+        >
+        > _„Die Wahrscheinlichkeit dafür, dass diese Fahrkarte spätestens am Vortrag gebucht wurde,
+        ist
+        achtmal so groß wie die Wahrscheinlichkeit dafür, dass sie erst am Tag der Fahrt gebucht
+        wurde.“_
+
+        <Steps>
+          <Step>
+            ### Ereignisse festlegen und bekannt Wahrscheinlichkeiten nutzen
+            Wir verwenden die Ereignisse aus dem Baumdiagramm:
+
+            - $B_V$: Fahrkarte wurde spätestens am Vortag gebucht
+            - $B_T$: Fahrkarte wurde am Tag der Fahrt gebucht
+            - $N$: Fahrkarte wird nicht genutzt
+
+            Aus dem Baumdiagramm kennen wir bereits die Pfadwahrscheinlichkeiten:
+
+            $$
+            \begin{aligned}
+            P(B_V \cap N) &= 0.80 \cdot 0.10 = 0.08 \\
+            P(B_T \cap N) &= 0.20 \cdot 0.05 = 0.01
+            \end{aligned}
+            $$
+          </Step>
+          <Step>
+            ### Wahrscheinlichkeit für eine nicht genutzte Fahrkarte
+            Zuerst berechnen wir die Gesamtwahrscheinlichkeit dafür, dass eine Fahrkarte nicht
+            genutzt
+            wird. Dazu addieren wir die beiden Pfade, die zu „nicht genutzt“ führen:
+
+            $$
+            P(N) = P(B_V \cap N) + P(B_T \cap N) = 0.08 + 0.01 = 0.09
+            $$
+          </Step>
+          <Step>
+            ### Bedingte Wahrscheinlichkeit berechnen
+            Gesucht sind die Wahrscheinlichkeiten
+
+            - $P(B_V \mid N)$: Fahrkarte wurde spätestens am Vortag gebucht, **unter der
+            Bedingung**,
+            dass sie nicht genutzt wurde
+            - $P(B_T \mid N)$: Fahrkarte wurde am Tag der Fahrt gebucht, **unter der Bedingung**,
+            dass
+            sie nicht genutzt wurde
+
+            Mit der Definition der [bedingten
+            Wahrscheinlichkeit](/bedingte-wahrscheinlichkeit/bedingte-wahrscheinlichkeit)
+
+            $$
+            P(A \mid B) = \frac {P(A \cap B)}{P(B)}
+            $$
+
+            erhalten wir:
+
+            $$
+            \begin{aligned}
+            P(B_V \mid N) &= \frac{P(B_V \cap N)} {P(N)} &= \frac{0.08}{0.09} &=
+            \frac{8}{9} &\approx
+            0.8889 \\
+            P(B_T \mid N) &= \frac {P(B_V)}{P(N)} &= \frac {0.01}{0.09} &= \frac {1} {9} &\approx
+            0.1111
+            \end{aligned}
+            $$
+          </Step>
+          <Step>
+            ### Verhältnisse bilden und Aussage beurteilen
+            Nun vergleichen wir die beiden Wahrscheinlichkeiten:
+
+            $$
+            \frac {P(B_V \mid N)}{P(B_T \mid N)}
+            = \frac{\frac{8}{9}}{\frac{1}{9}}
+            = \frac{8}{9} \cdot \frac{9}{1}
+            = 8
+            $$
+
+            Das bedeutet:
+
+            $$
+            P(B_V \mid N) = 8 \cdot P(B_T \mid N)
+            $$
+
+            <Callout type="success">
+              Die Wahrscheinlichkeit, dass eine zufällig ausgewählte, **nicht genutzte** Fahrkarte
+              spätestens am Vortag gebucht wurde, ist tatsächlich **achtmal so groß** wie die
+              Wahrscheinlichkeit, dass sie erst am Tag der Fahrt gebucht wurde.
+
+              Die gegeben Aussage ist also **richtig**.
+            </Callout>
+          </Step>
+        </Steps>
+      </Accordion.Body>
+    </Accordion.Panel>
+  </Accordion.Item>
+</Accordion>

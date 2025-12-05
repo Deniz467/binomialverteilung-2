@@ -1,0 +1,17 @@
+{
+  "title": "Lernen",
+  "description": "The description of root folder (optional)",
+  "root": true,
+  "pages": [
+    "---Bernoulli---",
+    "...bernoulli",
+    "---Sigma---",
+    "...sigma",
+    "---Bedingte Wahrscheinlichkeit---",
+    "...bedingte-wahrscheinlichkeit",
+    "---Binomialverteilung---",
+    "...binomialverteilung",
+    "---Beispielaufgaben---",
+    "...examples"
+  ]
+}

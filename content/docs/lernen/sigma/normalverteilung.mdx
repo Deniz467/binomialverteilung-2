@@ -1,0 +1,141 @@
+---
+title: Normalverteilung
+description: Grundlagen, Definition und Bedeutung der Normalverteilung.
+---
+
+import {OverviewCard} from "../../../../components/OverviewCard";
+import {Callout} from "fumadocs-ui/components/callout";
+import {NormalDistributionGraph} from "../../../../components/interactive/NormalDistributionGraph";
+import {NormalDistributionModal} from "../../../../components/interactive/NormalDistributionModal";
+
+
+<OverviewCard>
+
+  - Modelliert viele natürliche und statistische Phänomene
+  - Wird durch zwei Parameter bestimmt: Mittelwert $\mu$ und Standardabweichung $\sigma$
+  - Dichte hat die typische „Glockenkurve“
+  - Spezialfall: Standardnormalverteilung ($\mu = 0$, $\sigma = 1$)
+
+</OverviewCard>
+
+<br />
+
+<NormalDistributionModal />
+
+
+
+## Was ist eine Normalverteilung?
+
+Die **Normalverteilung** ist eine der wichtigsten Wahrscheinlichkeitsverteilungen überhaupt.
+Viele reale Daten – zum Beispiel Körpergrößen, Reaktionszeiten oder Messfehler –
+häufen sich um einen typischen Mittelwert und werden zur Seite hin immer seltener.
+
+Genau dieses Verhalten beschreibt die **glockenförmige Kurve** der Normalverteilung.
+
+Eine normalverteilte Zufallsvariable $X$ ist vollständig durch zwei Kennzahlen bestimmt:
+
+- den **Mittelwert** $\mu$, der angibt, wo die Kurve zentriert ist
+- die **Standardabweichung** $\sigma$, die beschreibt, wie breit oder schmal die Kurve ist
+
+Man schreibt dafür:
+$$
+X \sim \mathcal{N}(\mu,\, \sigma^2).
+$$
+
+Der Mittelwert kann jeder reelle Wert sein, während die Varianz immer positiv ist:
+
+$$
+\mu \in \mathbb{R}, \qquad \sigma^2 > 0.
+$$
+
+Je größer die Standardabweichung $\sigma$, desto weiter ist die Verteilung gestreut und desto flacher wird die Glockenkurve.
+Je kleiner $\sigma$, desto schmaler und höher wird sie.
+
+<Callout type="info" title="Was ist die Varianz?">
+  Die **Varianz** misst, wie stark die Werte einer Zufallsvariable im Durchschnitt vom Mittelwert abweichen.
+  Sie beschreibt also die **Streuung** der Daten.
+
+  Liegt die Varianz hoch, sind die Werte weit verteilt; liegt sie niedrig, liegen sie nah am Mittelwert.
+
+  Die Varianz wird mit $\sigma^2$ bezeichnet und ist immer positiv:
+  $$
+  \sigma^2 = \text{Var}(X).
+  $$
+
+  Die zugehörige **Standardabweichung** ist die Quadratwurzel der Varianz:
+
+  $$
+  \sigma = \sqrt{\sigma^{2}}
+  $$
+
+</Callout>
+
+
+
+## Warum ist die Normalverteilung so wichtig?
+
+Die Normalverteilung tritt in der Natur und Statistik ständig auf.
+Der zentrale Grenzwertsatz erklärt, warum: Werden viele kleine, voneinander unabhängige
+Zufälligkeiten wiederholt, ergibt sich beinahe automatisch eine normalverteilte Gesamtwirkung.
+
+Beispiele:
+
+- Messwerte mit zufälligen Messfehlern
+- Größen oder Gewichte in einer Population
+- Durchschnittswerte aus vielen Einzelversuchen
+
+Viele statistische Methoden basieren daher auf der Normalverteilung oder nähern andere Verteilungen durch sie an.
+
+
+## Dichtefunktion der Normalverteilung
+
+Die Wahrscheinlichkeitsdichtefunktion einer normalverteilten Zufallsvariable $X$ lautet:
+
+$$
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}
+\exp\!\left( -\frac{(x - \mu)^2}{2\sigma^2} \right).
+$$
+
+Sie ist stets symmetrisch um den Mittelwert $\mu$ und beschreibt die Form der bekannten Glockenkurve.
+
+
+<Callout type="info" title="Standardnormalverteilung">
+
+  Die **Standardnormalverteilung** ist ein Spezialfall der Normalverteilung.
+  Sie liegt vor, wenn
+  $$
+  \mu = 0 \qquad \text{und} \qquad \sigma = 1.
+  $$
+
+  Man bezeichnet sie mit
+  $$
+  Z \sim \mathcal{N}(0,\,1).
+  $$
+
+  Ihnen begegnet man besonders häufig, weil sich jede Normalverteilung durch Standardisierung in
+  eine Standardnormalverteilung umwandeln lässt.
+
+</Callout>
+
+
+## Verbindung zu den Sigma-Regeln
+
+Die bekannten **Sigma-Regeln** geben an, wie viel Wahrscheinlichkeit innerhalb von $1$, $2$ oder $3$ Standardabweichungen vom Mittelwert liegt.
+
+Mehr dazu findest du auf der Seite:
+**[Sigma-Regeln](./sigma-regeln)**
+
+## Formel2
+
+- depends on two key figures:  expected value $\mu$ and variance $\sigma ^2$
+
+$$
+\mu \in R \space \text{und} \space \sigma ^2 > 0
+$$
+
+<Callout type="info" title="Standardnormalverteilung">
+
+  Die Standardnormalverteilung ist eine besondere Form der Normalverteilung. Sie liegt dann vor,
+  wenn du eine Normalverteilung mit dem Mittelwert $\mu = 0$ und der Standardabweichung $\sigma = 1$
+  hast.
+</Callout>
