@@ -13,13 +13,10 @@ export const docs = defineDocs({
   dir: 'content/docs',
   docs: {
     schema: frontmatterSchema,
+    async: false,
     postprocess: {
       includeProcessedMarkdown: true,
     },
-    mdxOptions: {
-      remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex]
-    }
   },
   meta: {
     schema: metaSchema,
@@ -28,6 +25,7 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    // MDX options
+    remarkPlugins: (v) => [remarkMath, ...v],
+    rehypePlugins: (v) => [rehypeKatex, ...v],
   },
 });

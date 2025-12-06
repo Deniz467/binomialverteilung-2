@@ -4,13 +4,13 @@
   "root": true,
   "pages": [
     "---Bernoulli---",
-    "...bernoulli",
+    "index",
     "---Sigma---",
-    "...sigma",
+    "...(sigma)",
     "---Bedingte Wahrscheinlichkeit---",
-    "...bedingte-wahrscheinlichkeit",
+    "...(bedingte-wahrscheinlichkeit)",
     "---Binomialverteilung---",
-    "...binomialverteilung",
+    "...(binomialverteilung)",
     "---Beispielaufgaben---",
     "...examples"
   ]

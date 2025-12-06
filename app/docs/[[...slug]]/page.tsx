@@ -9,11 +9,15 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
+import {NotFound} from "@/components/not-found";
+import {getSuggestions} from "@/app/docs/[[...slug]]/suggestions";
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  if (!page) notFound();
+  if (!page) {
+    return <NotFound getSuggestions={() => getSuggestions(params.slug?.join(" ") ?? "")} />;
+  }
 
   const MDX = page.data.body;
 
