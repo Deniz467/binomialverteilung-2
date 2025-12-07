@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     default: "Binomialverteilung – Lernen, Üben, Nachschlagen",
     template: "%s | Binomialverteilung",
   },
+  applicationName: "Binomialverteilung",
   description,
   keywords: [
     "Binomialverteilung",
