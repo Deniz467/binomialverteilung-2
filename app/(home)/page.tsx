@@ -22,7 +22,7 @@ const direkteWege = [
     title: "Lernpfad",
     description:
         "Von Bernoulli-Experimenten bis Normalapproximation – in sinnvoller Reihenfolge aufgebaut.",
-    href: "/docs/lernen/(bernoulli)",
+    href: "/docs/lernen",
     icon: GraduationCap,
     cta: "Zum Lernpfad",
   },
@@ -38,7 +38,7 @@ const direkteWege = [
     title: "Formeln & Spickzettel",
     description:
         "Wichtige Formeln und Begriffe kompakt, wenn du schnell etwas nachschauen willst.",
-    href: "/docs/lernen/(binomialverteilung)",
+    href: "/docs/lernen",
     icon: Calculator,
     cta: "Nachschlagen",
   },
@@ -93,7 +93,7 @@ export default function HomePage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button asChild variant="primary" size="lg">
-                  <Link href="/docs/lernen/bernoulli" className="flex items-center gap-2">
+                  <Link href="/docs/lernen" className="flex items-center gap-2">
                     Mit der Theorie starten
                     <ArrowRight className="h-4 w-4" />
                   </Link>
