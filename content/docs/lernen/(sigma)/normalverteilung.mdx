@@ -1,136 +1,122 @@
 ---
 title: Normalverteilung
-description: Grundlagen, Definition und Bedeutung der Normalverteilung.
+description: Grundlagen, Eigenschaften und Bedeutung der Normalverteilung.
 ---
 
 import {OverviewCard} from "../../../../components/OverviewCard";
 import {Callout} from "fumadocs-ui/components/callout";
-import {NormalDistributionGraph} from "../../../../components/interactive/NormalDistributionGraph";
 import {NormalDistributionModal} from "../../../../components/interactive/NormalDistributionModal";
 
 
 <OverviewCard>
 
-  - Modelliert viele natürliche und statistische Phänomene
-  - Wird durch zwei Parameter bestimmt: Mittelwert $\mu$ und Standardabweichung $\sigma$
-  - Dichte hat die typische „Glockenkurve“
-  - Spezialfall: Standardnormalverteilung ($\mu = 0$, $\sigma = 1$)
+  - Beschreibt viele natürliche und statistische Erscheinungen
+  - Bestimmt durch: Mittelwert $\mu$ und Standardabweichung $\sigma$
+  - Typische Form: die bekannte Glockenkurve
+  - Wichtiger Spezialfall: Standardnormalverteilung ($\mu = 0$, $\sigma = 1$)
 
 </OverviewCard>
 
-<br />
+<br/>
 
-<NormalDistributionModal />
-
+<NormalDistributionModal/>
 
 
 ## Was ist eine Normalverteilung?
 
-Die **Normalverteilung** ist eine der wichtigsten Wahrscheinlichkeitsverteilungen überhaupt.
-Viele reale Daten – zum Beispiel Körpergrößen, Reaktionszeiten oder Messfehler –
-häufen sich um einen typischen Mittelwert und werden zur Seite hin immer seltener.
-
+Die **Normalverteilung** ist eine der wichtigsten Verteilungen in der Stochastik.
+Viele Werte, die in der Natur oder bei Messungen vorkommen, sammeln sich um einen typischen
+**Durchschnittswert** und werden nach links und rechts hin seltener.
 Genau dieses Verhalten beschreibt die **glockenförmige Kurve** der Normalverteilung.
 
-Eine normalverteilte Zufallsvariable $X$ ist vollständig durch zwei Kennzahlen bestimmt:
+Eine normalverteilte Zufallsvariable wird durch zwei Größen festgelegt:
 
-- den **Mittelwert** $\mu$, der angibt, wo die Kurve zentriert ist
-- die **Standardabweichung** $\sigma$, die beschreibt, wie breit oder schmal die Kurve ist
+- den **Mittelwert** $\mu$: Er gibt an, wo die Kurve zentriert ist.
+- die **Standardabweichung** $\sigma$: Sie beschreibt, wie stark die Werte um den Mittelwert streuen.
 
-Der Mittelwert kann jeder reelle Wert sein, während die Varianz immer positiv ist:
+Für die beiden gilt:
 
 $$
-\mu \in \mathbb{R}, \qquad \sigma^2 > 0.
+\mu \in \mathbb{R}, \qquad \sigma > 0.
 $$
 
-Je größer die Standardabweichung $\sigma$, desto weiter ist die Verteilung gestreut und desto flacher wird die Glockenkurve.
-Je kleiner $\sigma$, desto schmaler und höher wird sie.
+Ist die Standardabweichung groß, ist die Kurve breit und flach.
+Ist sie klein, wird die Kurve schmal und hoch.
 
-<Callout type="info" title="Was ist die Varianz?">
-  Die **Varianz** misst, wie stark die Werte einer Zufallsvariable im Durchschnitt vom Mittelwert abweichen.
-  Sie beschreibt also die **Streuung** der Daten.
+<Callout type="info" title="Varianz und Standardabweichung">
 
-  Liegt die Varianz hoch, sind die Werte weit verteilt; liegt sie niedrig, liegen sie nah am Mittelwert.
+  Die **Varianz** gibt an, wie stark die Werte im Durchschnitt vom Mittelwert abweichen.
+  Sie misst also die **Streuung** einer Zufallsvariable.
 
   Die Varianz wird mit $\sigma^2$ bezeichnet und ist immer positiv:
-  $$
-  \sigma^2 = \text{Var}(X).
-  $$
-
-  Die zugehörige **Standardabweichung** ist die Quadratwurzel der Varianz:
 
   $$
-  \sigma = \sqrt{\sigma^{2}}
+  \text{Var}(X) = \sigma^2.
+  $$
+
+  Die **Standardabweichung** ist die Quadratwurzel der Varianz:
+
+  $$
+  \sigma = \sqrt{\sigma^2}.
   $$
 
 </Callout>
 
 
+## Warum spielt die Normalverteilung eine so große Rolle?
 
-## Warum ist die Normalverteilung so wichtig?
+In vielen Situationen entstehen Werte durch das **Zusammenwirken vieler kleiner Zufälle**.
+Der zentrale Grenzwertsatz aus der Stochastik erklärt, dass sich daraus oft eine Verteilung ergibt, die näherungsweise normalverteilt ist.
 
-Die Normalverteilung tritt in der Natur und Statistik ständig auf.
-Der zentrale Grenzwertsatz erklärt, warum: Werden viele kleine, voneinander unabhängige
-Zufälligkeiten wiederholt, ergibt sich beinahe automatisch eine normalverteilte Gesamtwirkung.
-
-Beispiele:
+Typische Beispiele:
 
 - Messwerte mit zufälligen Messfehlern
-- Größen oder Gewichte in einer Population
-- Durchschnittswerte aus vielen Einzelversuchen
+- Körpergrößen oder Gewichte einer Population
+- Durchschnittswerte mehrerer unabhängiger Messungen
 
-Viele statistische Methoden basieren daher auf der Normalverteilung oder nähern andere Verteilungen durch sie an.
+Viele statistische Methoden basieren daher auf der Normalverteilung oder verwenden sie als Näherung.
 
 
-## Dichtefunktion der Normalverteilung
+## Die Dichtefunktion der Normalverteilung
 
-Die Wahrscheinlichkeitsdichtefunktion einer normalverteilten Zufallsvariable $X$ lautet:
+Die **Dichtefunktion** beschreibt die Form der Glockenkurve.
+Für eine Normalverteilung mit Mittelwert $\mu$ und Standardabweichung $\sigma$ lautet sie:
 
 $$
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}
-\exp\!\left( -\frac{(x - \mu)^2}{2\sigma^2} \right).
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} \cdot
+\mathrm{e}^{-\frac{(x - \mu)^2}{2\sigma^2}}
 $$
 
-Sie ist stets symmetrisch um den Mittelwert $\mu$ und beschreibt die Form der bekannten Glockenkurve.
+Wichtig ist vor allem:
 
+- Die Kurve ist **symmetrisch** um den Mittelwert $\mu$.
+- Je größer $\sigma$, desto breiter die Kurve.
+- Der höchste Punkt liegt genau bei $x = \mu$.
 
-<Callout type="info" title="Standardnormalverteilung">
+<Callout type="info" title="Die Standardnormalverteilung">
 
-  Die **Standardnormalverteilung** ist ein Spezialfall der Normalverteilung.
-  Sie liegt vor, wenn
+  Die **Standardnormalverteilung** ist eine Normalverteilung mit
+
   $$
-  \mu = 0 \qquad \text{und} \qquad \sigma = 1.
-  $$
-
-  Man bezeichnet sie mit
-  $$
-  Z \sim \mathcal{N}(0,\,1).
+  \mu = 0, \qquad \sigma = 1.
   $$
 
-  Ihnen begegnet man besonders häufig, weil sich jede Normalverteilung durch Standardisierung in
-  eine Standardnormalverteilung umwandeln lässt.
+  Sie wird häufig verwendet, weil man **jede** Normalverteilung durch eine sogenannte
+  *Standardisierung* in die Standardnormalverteilung umwandeln kann.
+  Dabei wird die Zufallsvariable $X$ mit Mittelwert $\mu$ und Standardabweichung $\sigma$
+  in die Zufallsvariable $z$ der Standardnormalverteilung überführt:
+
+  $$
+  z = \frac{X - \mu}{\sigma}
+  $$
 
 </Callout>
 
 
-## Verbindung zu den Sigma-Regeln
+## Die Sigma-Regeln
 
-Die bekannten **Sigma-Regeln** geben an, wie viel Wahrscheinlichkeit innerhalb von $1$, $2$ oder $3$ Standardabweichungen vom Mittelwert liegt.
+Die **Sigma-Regeln** geben an, wie viel Prozent aller Werte bei einer Normalverteilung in einem,
+zwei oder drei Standardabweichungen um den Mittelwert liegen.
 
-Mehr dazu findest du auf der Seite:
-**[Sigma-Regeln](./sigma-regeln)**
-
-## Formel2
-
-- depends on two key figures:  expected value $\mu$ and variance $\sigma ^2$
-
-$$
-\mu \in R \space \text{und} \space \sigma ^2 > 0
-$$
-
-<Callout type="info" title="Standardnormalverteilung">
-
-  Die Standardnormalverteilung ist eine besondere Form der Normalverteilung. Sie liegt dann vor,
-  wenn du eine Normalverteilung mit dem Mittelwert $\mu = 0$ und der Standardabweichung $\sigma = 1$
-  hast.
-</Callout>
+Mehr dazu findest du hier:
+**[Sigma-Regeln](./sigma)**

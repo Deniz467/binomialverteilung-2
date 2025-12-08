@@ -1,46 +1,124 @@
 ---
 title: Sigma-Regeln
-description: Description of your new file.
+description: Grundlagen und Bedeutung der Sigma-Regeln bei der Normalverteilung.
 ---
 
 import {SigmaGraph} from "../../../../components/SigmaGraph";
 import {Callout} from "fumadocs-ui/components/callout";
+import {Tabs} from "@heroui/react";
 
-<SigmaGraph />
+<SigmaGraph/>
+
 
 ## Was bedeuten die Sigma-Regeln?
 
-Die **Sigma-Regeln** beschreiben, wie groß der Anteil der Gesamtwahrscheinlichkeit ist,
-der bei einer **normalverteilten** Zufallsvariable innerhalb bestimmter Abstände
-vom [Erwartungswert](/binomialverteilung#erwartungswert) liegt.
-Der Erwartungswert wird dabei mit $\mu$ bezeichnet, die Standardabweichung mit $\sigma$.
+Die **Sigma-Regeln** beschreiben, wie stark sich die Werte einer **normalverteilten** Zufallsvariable um den Mittelwert konzentrieren.
 
-Die Standardabweichung $\sigma$ misst, wie stark die Werte im Durchschnitt vom Mittelwert abweichen.
-Sie bestimmt also, wie „breit“ oder „schmal“ die Normalverteilung ist.
+- Der **Mittelwert** wird mit $\mu$ bezeichnet.
+- Die **Standardabweichung** mit $\sigma$.
+
+Die Standardabweichung gibt an, wie weit „typische“ Werte vom Mittelwert entfernt sind und bestimmt
+damit die Breite der Glockenkurve.
+Die Sigma-Regeln beantworten also die Frage:
+**„Wie viel Prozent aller Werte liegen nah am Mittelwert – und wie viele sind selten?“**
+
 
 ## Die Sigma-Regeln im Überblick
 
-Die folgenden drei Aussagen gelten für **jede** normalverteilte Zufallsvariable:
-
 <Callout type="info" title="Sigma-Regeln">
-  - $P(\mu - \sigma \le X \le \mu + \sigma) \approx 68,3\% $
-  - $P(\mu - 2\sigma \le X \le \mu + 2\sigma) \approx 95,4\%$
-  - $P(\mu - 3\sigma \le X \le \mu + 3\sigma) \approx 99,7\%$
+  - $P(\mu - \sigma \le X \le \mu + \sigma) \approx 68{,}3\%$
+  - $P(\mu - 2\sigma \le X \le \mu + 2\sigma) \approx 95{,}4\%$
+  - $P(\mu - 3\sigma \le X \le \mu + 3\sigma) \approx 99{,}7\%$
 
-  $\mu$ = Erwartungswert (Mittelwert)\
+  $\mu$ = Mittelwert
   $\sigma$ = Standardabweichung
-
 </Callout>
 
-## Bedeutung der Regeln
 
-Die Sigma-Regeln zeigen, wie konzentriert die Werte einer normalverteilten Zufallsvariable um
-den Mittelwert liegen:
+## Erklärung der Sigma-Regeln
 
-- Im Bereich **eine Standardabweichung um den Mittelwert** liegen etwa **zwei Drittel aller Werte**.
-- Bei **zwei Standardabweichungen** sind es schon **fast alle Werte**.
-- Bei **drei Standardabweichungen** wird **praktisch die gesamte Verteilung** erfasst, da nur noch
-extrem seltene Werte außerhalb liegen.
+<div>
+  <Tabs className="w-full max-w-full mx-auto ">
+    <Tabs.ListContainer>
+      <Tabs.List aria-label="Sigma-Regeln">
+        <Tabs.Tab id="1-sigma">
+          $\sigma$
+          <Tabs.Indicator/>
+        </Tabs.Tab>
+        <Tabs.Tab id="2-sigma">
+          $2\sigma$
+          <Tabs.Indicator/>
+        </Tabs.Tab>
+        <Tabs.Tab id="3-sigma">
+          $3\sigma$
+          <Tabs.Indicator/>
+        </Tabs.Tab>
+      </Tabs.List>
+    </Tabs.ListContainer>
+    <Tabs.Panel id="1-sigma">
+      Etwa **$68 \, \%$ aller Werte** liegen im Bereich
 
-Damit eignen sich die Sigma-Regeln hervorragend, um schnell einzuschätzen, wie ungewöhnlich ein
-bestimmter Wert in einer Normalverteilung ist.
+      $$
+      \mu - \sigma \le X \le \mu + \sigma
+      $$
+
+      Das bedeutet:
+
+      - Zwei von drei Werten liegen **nah am Durchschnitt**.
+      - Der Bereich umfasst die typischen, häufig vorkommenden Werte.
+
+      Oft wird er als den **typischen Streubereich** bezeichnet.
+    </Tabs.Panel>
+    <Tabs.Panel id="2-sigma">
+      Ungefähr **$95\, \%$ aller Werte** liegen zwischen
+
+      $$
+      \mu - 2\sigma \quad \text{und} \quad \mu + 2\sigma
+      $$
+
+      Das bedeutet:
+
+      - Werte außerhalb dieses Bereichs sind **ungewöhnlich**.
+      - Nur etwa $5\,\%$ aller Werte liegen nicht darin.
+
+      Ein Wert, der mehr als zwei Standardabweichungen vom Mittelwert abweicht, gilt daher oft als
+      **auffällig**.
+    </Tabs.Panel>
+    <Tabs.Panel id="3-sigma">
+      Rund $99,7\,\%$ **aller Werte** befinden sich im Intervall
+
+      $$
+      \mu - 3\sigma \le X \le \mu + 3\sigma
+      $$
+
+      Das bedeutet:
+
+      - Werte außerhalb dieses Bereichs sind **extrem selten**.
+      - Weniger als $1$ von $300$ Werten liegt weiter entfernt.
+
+      Solche Werte werden auch **Ausreißer** genannt.
+    </Tabs.Panel>
+  </Tabs>
+</div>
+
+
+## Beispiel
+
+Betrachte die Körpergröße in einer großen Gruppe:
+
+- $1\sigma$: Die meisten Menschen sind nicht weit vom Durchschnitt entfernt.
+- $2\sigma$: Ungewöhnlich große oder kleine Menschen.
+- $3\sigma$: Extrem groß oder extrem klein – kommt sehr selten vor.
+
+Dieses Beispiel zeigt, wie die Werte einer Normalverteilung rund um den Mittelwert verteilt sind.
+
+
+## Wozu dienen die Sigma-Regeln?
+
+Die Sigma-Regeln ermöglichen eine schnelle Einschätzung:
+
+- Ist ein Wert **normal**, **ungewöhnlich** oder **sehr selten**?
+- Streuen die Werte stark oder konzentrieren sie sich am Mittelwert?
+- Gibt es **Ausreißer**, die deutlich vom Rest abweichen?
+
+Sie bieten damit eine einfache Orientierung, ohne Wahrscheinlichkeiten exakt berechnen zu müssen.
