@@ -3,7 +3,7 @@ export const SigmaGraph = () => {
   const xMax = 360;
   const yBase = 170;
 
-  const positions = Array.from({ length: 7 }, (_, i) =>
+  const positions = Array.from({length: 7}, (_, i) =>
       xMin + (i * (xMax - xMin)) / 6
   );
   const labels = ["-3σ", "-2σ", "-1σ", "μ", "+1σ", "+2σ", "+3σ"];
@@ -16,8 +16,7 @@ export const SigmaGraph = () => {
       bg-content1
       px-5
       py-4
-      max-w-xl      /* Bild kleiner */
-      mx-auto       /* in der Mitte */
+      max-w-xl
       shadow-sm
     ">
         <p className="text-sm text-foreground-600 mb-3">
@@ -32,7 +31,7 @@ export const SigmaGraph = () => {
                 y={30}
                 width={xMax - xMin}
                 height={yBase - 30}
-                style={{ fill: "var(--(sigma)-3)" }}
+                style={{fill: "var(--(sigma)-3)"}}
             />
 
             {/* 2σ-Bereich */}
@@ -41,7 +40,7 @@ export const SigmaGraph = () => {
                 y={30}
                 width={positions[5] - positions[1]}
                 height={yBase - 30}
-                style={{ fill: "var(--(sigma)-2)" }}
+                style={{fill: "var(--(sigma)-2)"}}
             />
 
             {/* 1σ-Bereich */}
@@ -50,7 +49,7 @@ export const SigmaGraph = () => {
                 y={30}
                 width={positions[4] - positions[2]}
                 height={yBase - 30}
-                style={{ fill: "var(--(sigma)-1)" }}
+                style={{fill: "var(--(sigma)-1)"}}
             />
 
             {/* Glockenkurve */}
@@ -123,7 +122,7 @@ export const SigmaGraph = () => {
           <div className="flex items-center gap-2">
           <span
               className="inline-block h-3 w-3 rounded"
-              style={{ backgroundColor: "var(--(sigma)-1)" }}
+              style={{backgroundColor: "var(--(sigma)-1)"}}
           />
             <span>≈ 68,3 % in [μ − σ, μ + σ]</span>
           </div>
@@ -131,7 +130,7 @@ export const SigmaGraph = () => {
           <div className="flex items-center gap-2">
           <span
               className="inline-block h-3 w-3 rounded"
-              style={{ backgroundColor: "var(--(sigma)-2)" }}
+              style={{backgroundColor: "var(--(sigma)-2)"}}
           />
             <span>≈ 95,4 % in [μ − 2σ, μ + 2σ]</span>
           </div>
@@ -139,7 +138,7 @@ export const SigmaGraph = () => {
           <div className="flex items-center gap-2">
           <span
               className="inline-block h-3 w-3 rounded"
-              style={{ backgroundColor: "var(--(sigma)-3)" }}
+              style={{backgroundColor: "var(--(sigma)-3)"}}
           />
             <span>≈ 99,7 % in [μ − 3σ, μ + 3σ]</span>
           </div>

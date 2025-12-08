@@ -1,6 +1,7 @@
 ---
 title: "Naturpark Touristen"
 description: "S. 178"
+full: true
 ---
 import {Step, Steps} from "fumadocs-ui/components/steps";
 import {Callout} from "fumadocs-ui/components/callout";
@@ -17,7 +18,7 @@ binomialverteilt ist.
 
 Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt.
 
-<Accordion className="fd-content mx-auto w-full max-w-3xl" variant="surface">
+<Accordion className="fd-content w-full max-w-4xl" variant="surface">
   <Accordion.Item>
     <Accordion.Heading className="not-prose">
       <Accordion.Trigger>
@@ -36,7 +37,7 @@ Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt
           <Step>
 
             ### Ansatz
-            [Einzelwahrscheinlichkeit](/binomialverteilung#einzelwahrscheinlichkeit) berechnen.
+            [Einzelwahrscheinlichkeit](../binomialverteilung#formeln) berechnen.
 
             **Gegeben**:
 
@@ -97,7 +98,7 @@ Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt
         <Steps>
           <Step>
             ### Erwartungswert berechnen
-            Berechne den [Erwartungswert](/binomialverteilung#erwartungswert) mit den gegeben
+            Berechne den [Erwartungswert](../binomialverteilung#erwartungswert) mit den gegeben
             Werten:
 
             $$E(X)= n \cdot p = 300 \cdot 0.14 = 42$$
@@ -120,7 +121,7 @@ Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt
             ### Kumulierte Wahrscheinlichkeit berechnen
 
             Nun müssen wir die [kumulierte
-            Wahrscheinlichkeit](/binomialverteilung#kumulierte-wahrscheinlichkeit) berechnen.
+            Wahrscheinlichkeit](../binomialverteilung#formeln) berechnen.
 
             **Gegeben**:
 
@@ -180,9 +181,9 @@ ein. Die Fahrkarten dür diese Busse können ausschließlich online gebucht werd
 einen bestimmten Tag gültig. Erfahrungsgemäß werden $80\,\%$ aller gebuchter Fahrkarten spätestens
 am Vortag der Fahrt gebucht. Von diesen spätestens am Vortag gebuchten Fahrkarten werden $90\,\%$
 auch täglich genutzt. Bei den restlichen, erst am Tag der Fahrt gebuchten Fahrkarten liegt der
-Anteil mit $95\,\%$ % etwas höher.
+Anteil mit $95\,\%$ etwas höher.
 
-<Accordion className="fd-content mx-auto w-full max-w-3xl" variant="surface">
+<Accordion className="fd-content w-full max-w-4xl" variant="surface">
   <Accordion.Item>
     <Accordion.Heading className="not-prose">
       <Accordion.Trigger>
@@ -272,7 +273,7 @@ Anteil mit $95\,\%$ % etwas höher.
             sie nicht genutzt wurde
 
             Mit der Definition der [bedingten
-            Wahrscheinlichkeit](/bedingte-wahrscheinlichkeit/bedingte-wahrscheinlichkeit)
+            Wahrscheinlichkeit](../bedingte-wahrscheinlichkeit#formel-der-bedingten-wahrscheinlichkeit)
 
             $$
             P(A \mid B) = \frac {P(A \cap B)}{P(B)}

@@ -1,20 +1,21 @@
 ---
 title: "Füllgewichte von Kakaopackungen"
 description: "S. 34"
+full: true
 ---
 import {Step, Steps} from "fumadocs-ui/components/steps";
 import {Accordion, Tabs} from "@heroui/react";
+import Image from "next/image";
 import {Callout} from "fumadocs-ui/components/callout";
 
+Ein Unternehmen stellt Kakaopulver her. Die Zufallsgröße $X$ beschreibt das Füllgewicht der
+Packungen in Gramm $(\text{g})$ und wird als normalverteilt angenommen.
+Der Erwartungswert des Füllgewichts beträgt $125 \,\text{g}$, die Standardabweichung beträgt
+$2 \,\text{g}$.
 
+Alle Gewichte sind in Gramm, auf eine Nachkommastelle gerundet, anzugeben.
 
-Ein Unternehmen stellt Kakaoupulver her. Die Zufallsgröße $X$ beschreibt das Füllgewicht der
-Packungen in Gramm (g) und wird als normalverteilt angenommen. Der Erwartungswert des Füllgewichts
-beträgt $125\,g$. Die Standardabweichung beträgt $2\,g$.
-
-Alle Gewichte sind in Gramm auf eine Nachkommastelle gerundet, anzugeben.
-
-<Accordion className="fd-content mx-auto w-full max-w-3xl" variant="surface">
+<Accordion className="fd-content w-full max-w-4xl" variant="surface">
   <Accordion.Item>
     <Accordion.Heading className="not-prose">
       <Accordion.Trigger>
@@ -26,208 +27,269 @@ Alle Gewichte sind in Gramm auf eine Nachkommastelle gerundet, anzugeben.
       <Accordion.Body>
         > Berechnen Sie die Wahrscheinlichkeit dafür, dass das Füllgewicht einer beliebigen Packung
         >
-        > 1. zwischen $124,5 \,g$ und $125,4 \,g$ liegt.
-        > 2. über $127,0 \,g$ liegt.
-        > 3. höchstens $122,0 \,g$ beträgt.
+        > - zwischen $124{,}5 \,\text{g}$ und $125{,}4 \,\text{g}$ liegt,
+        > - über $127{,}0 \,\text{g}$ liegt,
+        > - höchstens $122{,}0 \,\text{g}$ oder mindestens $128{,}0 \,\text{g}$ beträgt.
         >
-        > Bestimmen Sie das größte Gewicht, das mindestens $95\,\%$ der Packungen überschreiten.
+        > Bestimmen Sie das größte Gewicht, das mindestens $95 \,\%$ der Packungen überschreiten.
 
         <Tabs className="w-full max-w-md">
           <Tabs.ListContainer>
-            <Tabs.List aria-label="Tasks">
-              <Tabs.Tab id="1">
+            <Tabs.List aria-label="Teilaufgaben A">
+              <Tabs.Tab id="a1">
                 1.
                 <Tabs.Indicator/>
               </Tabs.Tab>
-              <Tabs.Tab id="2">
+              <Tabs.Tab id="a2">
                 2.
                 <Tabs.Indicator/>
               </Tabs.Tab>
-              <Tabs.Tab id="3">
+              <Tabs.Tab id="a3">
                 3.
+                <Tabs.Indicator/>
+              </Tabs.Tab>
+              <Tabs.Tab id="a4">
+                4.
                 <Tabs.Indicator/>
               </Tabs.Tab>
             </Tabs.List>
           </Tabs.ListContainer>
-          <Tabs.Panel className="pt-4" id="1">
-            > 1. Zwischen $124.5\, g$ und $125.4\, g$
+
+          {/* A1: Intervall 124,5 bis 125,4 */}
+          <Tabs.Panel className="pt-4" id="a1">
+            > 1. Zwischen $124{,}5 \,\text{g}$ und $125{,}4 \,\text{g}$
 
             <Steps>
               <Step>
-                ### Standardisierung
-                Gegeben: $X \sim N(\mu = 125,\ \sigma = 2)$.
+                ### Wahrscheinlichkeit als Intervall formulieren
 
-                Gesucht ist:
-
-                $$
-                P(124.5 \le X \le 125.4).
-                $$
-
-                Standardisierung mit $Z = \frac{X -\mu}{\sigma}$:
+                Gesucht ist
 
                 $$
-                z_1 = \frac{124.5 - 125}{2} = -0.25,\quad
-                z_2 = \frac{125.4 - 125}{2} = 0.20.
+                P(124{,}5 \le X \le 125{,}4).
                 $$
 
-                Damit:
+                Die Normalverteilung ist durch
 
                 $$
-                P(124.5 \le X \le 125.4) = P(-0.25 \le Z \le 0.20).
+                \mu = 125, \qquad \sigma = 2
                 $$
+
+                gegeben.
               </Step>
               <Step>
-                ### Mit CAS / Taschenrechner berechnen
-                Mit einem geeigneten Befehl, z. B.:
+                ### Mit CAS berechnen
 
-                ```text
-                normalCdf(124.5, 125.4, 125, 2)
-                ```
+                <Callout type="idea" title="Taschenrechnerbefehl">
+                  1. $\boxed{\text{menu}}$
+                  2. Wahrscheinlichkeit (5)
+                  3. Verteilung (5)
+                  4. Normal Cdf (2)
+                </Callout>
 
-                erhält man:
+                <Image
+                    src="/images/examples/kakaoupackungen/calc-a-1.png"
+                    width={800}
+                    height={450}
+                    alt="Taschenrechner eingabe für Normal Cdf"
+                />
 
-                $$
-                P(124.5 \le X \le 125.4) \approx 0.1780.
-                $$
+                $\boxed{normCdf(124.5,125.4,125,2) \approx 0.178}$
               </Step>
               <Step>
                 ### Antwort
+
                 <Callout type="success">
-                  Die Wahrscheinlichkeit, dass das Füllgewicht zwischen $124.5\ \text{g}$ und $125.4\
-                  \text{g}$ liegt, beträgt ungefähr $17.8\,\%$.
+                  Die Wahrscheinlichkeit, dass das Füllgewicht zwischen
+                  $124{,}5 \,\text{g}$ und $125{,}4 \,\text{g}$ liegt, beträgt ungefähr
+                  $17{,}8 \,\%$.
                 </Callout>
               </Step>
             </Steps>
           </Tabs.Panel>
-          <Tabs.Panel className="pt-4" id="2">
-            > 2. Über $127.0\, g$
+
+          {/* A2: Über 127,0 g */}
+          <Tabs.Panel className="pt-4" id="a2">
+            > 2. Über $127{,}0 \,\text{g}$
 
             <Steps>
               <Step>
-                ### Standardisierung
-                Gesucht:
+                ### Wahrscheinlichkeit formulieren
+
+                Gesucht ist
 
                 $$
-                P(X > 127.0).
+                P(X > 127{,}0).
                 $$
 
-                Standardisierung:
+                Die Normalverteilung ist durch
 
                 $$
-                z = \frac{127.0 - 125}{2} = 1.
+                \mu = 125, \qquad \sigma = 2
                 $$
 
-                Also:
-
-                $$
-                P(X > 127.0) = P(Z > 1).
-                $$
+                gegeben.
               </Step>
               <Step>
-                ### Mit CAS / Taschenrechner berechnen
-                Zum Beispiel:
+                ### Mit CAS berechnen
 
-                ```text
-                normalCdf(127.0, 10^9, 125, 2)
-                ```
+                <Callout type="idea" title="Taschenrechnerbefehl">
+                  1. $\boxed{\text{menu}}$
+                  2. Wahrscheinlichkeit (5)
+                  3. Verteilung (5)
+                  4. Normal Cdf (2)
+                </Callout>
 
-                Ergebnis:
+                <Image
+                    src="/images/examples/kakaoupackungen/calc-a-2.png"
+                    width={800}
+                    height={450}
+                    alt="Taschenrechner eingabe für Normal Cdf"
+                />
 
-                $$
-                P(X > 127.0) \approx 0.1587.
-                $$
+                $\boxed{normCdf(127,\infty,125,2) \approx 0.159}$
               </Step>
               <Step>
                 ### Antwort
+
                 <Callout type="success">
-                  Die Wahrscheinlichkeit, dass das Füllgewicht über $127.0\ \text{g}$ liegt, beträgt
-                  ungefähr $15.9\,\%$.
+                  Die Wahrscheinlichkeit, dass das Füllgewicht über
+                  $127{,}0 \,\text{g}$ liegt, beträgt ungefähr $15{,}9 \,\%$.
                 </Callout>
               </Step>
             </Steps>
           </Tabs.Panel>
-          <Tabs.Panel className="pt-4" id="3">
-            > 3. Höchstens $122.0 \, g$ und größtes Gewicht, das mindestens $95 \, \%$ überschreiten
+
+          {/* A3: höchstens 122,0 g oder mindestens 128,0 g */}
+          <Tabs.Panel className="pt-4" id="a3">
+            > 3. Höchstens $122{,}0 \,\text{g}$ oder mindestens $128{,}0 \,\text{g}$
 
             <Steps>
               <Step>
-                ### Wahrscheinlichkeit für höchstens 122,0 g
-                Gesucht:
+                ### Wahrscheinlichkeit in zwei Teile zerlegen
+
+                Gesucht ist die Wahrscheinlichkeit für „sehr kleine oder sehr große“ Füllgewichte:
 
                 $$
-                P(X \le 122.0).
+                P(X \le 122{,}0 \ \text{oder}\ X \ge 128{,}0).
                 $$
 
-                Standardisierung:
+                Das sind zwei Randbereiche der Verteilung:
 
                 $$
-                z = \frac{122.0 - 125}{2} = -1.5.
+                P(X \le 122{,}0) + P(X \ge 128{,}0).
                 $$
+              </Step>
+              <Step>
+                ### Symmetrie der Normalverteilung ausnutzen
+
+                $122{,}0 \,\text{g}$ liegt $3{,}0 \,\text{g}$ unter dem Mittelwert,
+                $128{,}0 \,\text{g}$ liegt $3{,}0 \,\text{g}$ darüber.
+
+                Die Normalverteilung ist symmetrisch, daher gilt:
+
+                $$
+                P(X \le 122{,}0) = P(X \ge 128{,}0).
+                $$
+
+                Es reicht also, eine der beiden Wahrscheinlichkeiten zu bestimmen und dann zu verdoppeln.
+              </Step>
+              <Step>
+                ### Einzelne Wahrscheinlichkeit mit CAS berechnen
+
+                <Callout type="idea" title="Taschenrechnerbefehl">
+                  1. $\boxed{\text{menu}}$
+                  2. Wahrscheinlichkeit (5)
+                  3. Verteilung (5)
+                  4. Normal Cdf (2)
+                </Callout>
+
+                <Image
+                    src="/images/examples/kakaoupackungen/calc-a-3.png"
+                    width={800}
+                    height={450}
+                    alt="Taschenrechner eingabe für Normal Cdf"
+                />
+
+
+                $\boxed{normCdf(−\infty,122,125,2) \approx 0.067}$
 
                 Also:
 
                 $$
-                P(X \le 122.0) = P(Z \le -1.5).
+                P(X \le 122{,}0) \approx 0{,}067
+                $$
+                $$
+                P(X \ge 128{,}0) \approx 0{,}067
                 $$
 
-                Mit CAS:
-
-                ```text
-                normalCdf(-10^9, 122.0, 125, 2)
-                ```
-
-                ergibt:
+                und insgesamt
 
                 $$
-                P(X \le 122.0) \approx 0.0668.
-                $$
-              </Step>
-              <Step>
-                ### Größtes Gewicht, das mindestens 95 % überschreiten
-                „Mindestens 95 % überschreiten das Gewicht $w$“ bedeutet:
-
-                $$
-                P(X > w) = 0.95.
-                $$
-
-                Das ist äquivalent zu:
-
-                $$
-                P(X \le w) = 0.05.
-                $$
-
-                $w$ ist also das **5 %-Quantil** von $N(125,2^2)$.
-
-                Standardisierung:
-
-                $$
-                P(X \le w) = 0.05 \quad \Leftrightarrow \quad P\Bigl(Z \le \frac{w - 125}{2}\Bigr) =
-                0.05.
-                $$
-
-                Aus der Standardnormalverteilung:
-
-                $$
-                z_{0.05} \approx -1.645.
-                $$
-
-                Rückrechnung:
-
-                $$
-                w = 125 + 2 \cdot (-1.645) \approx 125 - 3.29 \approx 121.7.
+                P(X \le 122{,}0 \ \text{oder}\ X \ge 128{,}0)
+                \approx 0{,}067 + 0{,}067
+                \approx 0{,}134
                 $$
               </Step>
               <Step>
                 ### Antwort
+
                 <Callout type="success">
-                  - $\displaystyle P(X \le 122.0) \approx 6.7\,\%$.
-                  - Das größte Gewicht, das mindestens $95\,\%$ der Packungen überschreiten, beträgt
+                  Die Wahrscheinlichkeit, dass das Füllgewicht höchstens
+                  $122{,}0 \,\text{g}$ oder mindestens $128{,}0 \,\text{g}$ beträgt,
+                  liegt bei ungefähr $13{,}4 \,\%$.
+                </Callout>
+              </Step>
+            </Steps>
+          </Tabs.Panel>
+
+          {/* A4: Größtes Gewicht, das 95 % überschreiten */}
+          <Tabs.Panel className="pt-4" id="a4">
+            > 4. Größtes Gewicht, das mindestens $95 \,\%$ der Packungen überschreiten
+
+            <Steps>
+              <Step>
+                ### Aussage in eine Wahrscheinlichkeit übersetzen
+
+                „Mindestens $95 \,\%$ der Packungen überschreiten das Gewicht $w$“ bedeutet:
+
+                $$
+                P(X > w) = 0{,}95.
+                $$
+
+                Das ist gleichbedeutend mit
+
+                $$
+                P(X \le w) = 0{,}05.
+                $$
+              </Step>
+              <Step>
+                ### $w$ mit CAS bestimmen
+
+                Wir suchen also das Gewicht $w$, für das die Normalverteilung bis $w$ genau
+                $5 \,\%$ Fläche unter der Kurve hat.
+
+                Mit der **Solve** funktion vom CAS kann man die Gleichung lösen
+
+                $$
+                \boxed{
+                \begin{aligned}
+                solve(normCdf(−\infty , w, 125, 2) = 0.05, w) \\
+                w = 127.71
+                \end{aligned}
+              }
+                $$
+              </Step>
+              <Step>
+                ### Antwort
+
+                <Callout type="success">
+                  Das größte Gewicht, das mindestens $95 \,\%$ der Packungen überschreiten,
+                  beträgt (auf eine Nachkommastelle gerundet)
 
                   $$
-                  w \approx 121.7\ \text{g}.
+                  w \approx 121{,}7 \,\text{g}.
                   $$
-
-                  (Auf eine Nachkommastelle gerundet.)
                 </Callout>
               </Step>
             </Steps>
@@ -237,6 +299,7 @@ Alle Gewichte sind in Gramm auf eine Nachkommastelle gerundet, anzugeben.
     </Accordion.Panel>
   </Accordion.Item>
 
+  {/* Aufgabe B */}
   <Accordion.Item>
     <Accordion.Heading className="not-prose">
       <Accordion.Trigger>
@@ -247,198 +310,233 @@ Alle Gewichte sind in Gramm auf eine Nachkommastelle gerundet, anzugeben.
     <Accordion.Panel>
       <Accordion.Body>
         > Der Hersteller überprüft seine Abfüllmaschine. Dafür untersucht er $500$ Packungen, die von
-        dieser Maschine abgefüllt wurden. Ein zu geringes Füllgewicht ist gegeben, wenn dieses mehr
-        als $4,5 \,\g$ unter dem Erwartungswert liegt.
+        > dieser Maschine abgefüllt wurden. Ein zu geringes Füllgewicht ist gegeben, wenn dieses mehr
+        > als $4{,}5 \,\text{g}$ unter dem Erwartungswert liegt.
         >
         > Zeigen Sie die Gültigkeit der folgenden Aussage mithilfe einer geeigneten
-        Binomialverteilung:
-        Die Wahrscheinlichkeit dafür, dass mehr als $2\,\%$ der Packungen ein zu geringes Füllgewicht
-        haben, beträgt etwa $4,6\,\%$.
+        > Binomialverteilung:
+        >
+        > _„Die Wahrscheinlichkeit dafür, dass mehr als $2 \,\%$ der Packungen ein zu geringes
+        > Füllgewicht haben, beträgt etwa $4{,}6 \,\%$.“_
         >
         > Ein Großhändler erhält $10$ Lieferungen mit jeweils $500$ Packungen. Berechnen Sie
-        die Wahrscheinlichkeit dafür, dass bei höchstens einer dieser Lieferungen mehr
-        als $2\,\%$ der Packungen ein zu geringes Füllgewicht haben.
+        > die Wahrscheinlichkeit dafür, dass bei höchstens einer dieser Lieferungen mehr
+        > als $2 \,\%$ der Packungen ein zu geringes Füllgewicht haben.
 
         <Tabs className="w-full max-w-md">
           <Tabs.ListContainer>
-            <Tabs.List aria-label="Task">
-              <Tabs.Tab id="check-statement">
+            <Tabs.List aria-label="Teilaufgaben B">
+              <Tabs.Tab id="b1">
                 Gültigkeit der Aussage
                 <Tabs.Indicator/>
               </Tabs.Tab>
-              <Tabs.Tab id="probability-for-large-filling-weight">
-                Wahrscheinlichkeit für zu geringes Füllgewicht
+              <Tabs.Tab id="b2">
+                Höchstens eine Lieferung
                 <Tabs.Indicator/>
               </Tabs.Tab>
             </Tabs.List>
           </Tabs.ListContainer>
-          <Tabs.Panel className="pt-4" id="check-statement">
+
+          {/* B1: Mehr als 2 % bei 500 Packungen */}
+          <Tabs.Panel className="pt-4" id="b1">
             <Steps>
               <Step>
-                ### Wahrscheinlichkeit für zu geringes Füllgewicht (einzelne Packung)
-                „Zu geringes Füllgewicht“ bedeutet:
+                ### Einzelwahrscheinlichkeit bestimmen
+
+                „Zu geringes Füllgewicht“ heißt:
 
                 $$
-                X < 125 - 4.5 = 120.5\ \text{g}.
+                X < 125 - 4{,}5 = 120{,}5 \,\text{g}.
                 $$
 
-                Standardisierung:
+                Gesucht ist also
 
                 $$
-                z = \frac{120.5 - 125}{2} = -2.25.
+                p = P(X < 120{,}5).
                 $$
+
+                Die Normalverteilung ist durch
+
+                $$
+                \mu = 125, \qquad \sigma = 2
+                $$
+
+                gegeben.
+              </Step>
+              <Step>
+                ### Einzelwahrscheinlichkeit mit CAS berechnen
+
+                <Callout type="idea" title="Taschenrechnerbefehl – Normal Cdf">
+                  1. $\boxed{\text{menu}}$
+                  2. Wahrscheinlichkeit $(5)$
+                  3. Verteilung $(5)$
+                  4. Normal Cdf $(2)$
+                </Callout>
+
+                <Image
+                    src="/images/examples/kakaoupackungen/calc-b-1-norm.png"
+                    width={800}
+                    height={450}
+                    alt="Taschenrechnereingabe für Normal Cdf: P(X < 120.5)"
+                />
+
+                $\boxed{\text{normCdf}(-\infty,120.5,125,2) \approx 0.012}$
 
                 Also:
 
                 $$
-                p = P(X < 120.5) = P(Z < -2.25).
-                $$
-
-                Mit CAS:
-
-                ```text
-                normalCdf(-10^9, 120.5, 125, 2)
-                ```
-
-                erhält man:
-
-                $$
-                p \approx 0.0122 \quad \Rightarrow \quad 1.22\,\%\ \text{zu geringe Packungen}.
+                p \approx 0{,}012 \quad\Rightarrow\quad 1{,}2 \,\% \text{ zu geringe Packungen}.
                 $$
               </Step>
               <Step>
-                ### Binomialmodell für 500 Packungen
-                Es werden $n = 500$ Packungen geprüft.\
-                Zufallsgröße:
+                ### Binomialverteilung ansetzen
+
+                Es werden $500$ Packungen untersucht.
+                Zufallsvariable:
 
                 $$
-                Y = \text{Anzahl der Packungen mit zu geringem Füllgewicht}.
+                Y = \text{„Anzahl der Packungen mit zu geringem Füllgewicht“}.
                 $$
 
-                Dann:
+                Damit:
 
                 $$
-                Y \sim \text{Bin}(n = 500,\ p \approx 0.0122).
+                Y \sim \text{Binomial}(n = 500, p \approx 0{,}012).
                 $$
 
-                „Mehr als 2 % der Packungen“ bedeutet:
+                „Mehr als $2 \,\%$“ von $500$ Packungen bedeutet:
 
                 $$
-                2\,\% \text{von} 500 = 10\ \text{Packungen},\quad Y > 10 \Leftrightarrow Y \ge 11.
+                0{,}02 \cdot 500 = 10.
+                $$
+
+                Gesucht ist also:
+
+                $$
+                P(Y > 10) = P(Y \ge 11).
                 $$
               </Step>
               <Step>
-                ### Mit CAS / Taschenrechner berechnen
-                Gesucht:
+                ### Binomialwahrscheinlichkeit mit CAS berechnen
+
+                Wir verwenden die kumulierte Verteilung $P(Y \le k)$.
 
                 $$
-                P(Y > 10) = P(Y \ge 11) = 1 - P(Y \le 10).
+                P(Y \ge 11) = 1 - P(Y \le 10).
                 $$
 
-                Mit einem geeigneten Befehl, z. B.:
+                <Callout type="idea" title="Taschenrechnerbefehl – Binomial Cdf">
+                  1. $\boxed{\text{menu}}$
+                  2. Wahrscheinlichkeit $(5)$
+                  3. Verteilung $(5)$
+                  4. Binomial Cdf $(B)$
+                </Callout>
 
-                ```text
-                binomCdf(500, 0.0122, 0, 10) → P(Y ≤ 10)
-                1 - binomCdf(500, 0.0122, 0, 10) → P(Y ≥ 11)
-                ```
+                <Image
+                    src="/images/examples/kakaoupackungen/calc-b-1-binom.png"
+                    width={800}
+                    height={450}
+                    alt="Taschenrechnereingabe für Binom Cdf: P(Y ≤ 10)"
+                />
 
-                Ergebnis:
+                $\boxed{\text{binomCdf}(500,0.012,0,10) \approx 0.958}$
+
+                Also:
 
                 $$
-                P(Y \ge 11) \approx 0.046 \quad \text{(also etwa}4.6\,\%\text{)}.
+                P(Y \ge 11) = 1 - 0{,}958 \approx 0{,}046
                 $$
               </Step>
               <Step>
                 ### Antwort
+
                 <Callout type="success">
-                  Die Wahrscheinlichkeit, dass bei $500$ geprüften Packungen **mehr als 2 %** ein zu
+                  Die Wahrscheinlichkeit, dass bei $500$ Packungen **mehr als $2 \,\%$** ein zu
                   geringes Füllgewicht haben, beträgt ungefähr
 
                   $$
-                  4.6\,\%.
+                  4{,}6 \,\%.
                   $$
 
-                  Die angegebene Aussage ist damit erfüllt.
+                  Die angegebene Aussage ist damit **zutreffend**.
                 </Callout>
               </Step>
             </Steps>
           </Tabs.Panel>
-          <Tabs.Panel className="pt-4" id="probability-for-large-filling-weight">
+
+          <Tabs.Panel className="pt-4" id="b2">
             <Steps>
               <Step>
-                ### Neue Zufallsgröße für Lieferungen
-                Für jede Lieferung mit $500$ Packungen betrachten wir das Ereignis:
+                ### Binomialverteilung für Lieferungen
+
+                Für eine einzelne Lieferung mit $500$ Packungen betrachten wir das Ereignis
 
                 $$
-                A:\ \text{„Mehr als 2 % der Packungen haben zu geringes Füllgewicht“}.
+                A:\ \text{„Mehr als } 2 \,\% \text{ der Packungen haben ein zu geringes Füllgewicht.“}
                 $$
 
-                Aus dem ersten Teil:
+                Aus Teilaufgabe $\text{B1}$:
 
                 $$
-                P(A) \approx 0.046.
+                P(A) \approx 0{,}046.
                 $$
 
-                Der Großhändler erhält $10$ Lieferungen.\
-                Zufallsgröße:
+                Der Großhändler erhält $10$ Lieferungen.
+                Zufallsvariable:
 
                 $$
-                Z = \text{Anzahl der Lieferungen, bei denen} A \text{eintritt}.
+                Z = \text{„Anzahl der Lieferungen, bei denen } A \text{ eintritt“}.
                 $$
 
                 Dann:
 
                 $$
-                Z \sim \text{Bin}(n = 10,\ p \approx 0.046).
+                Z \sim \text{Binomial}(n = 10, p \approx 0{,}046).
                 $$
               </Step>
               <Step>
-                ### Gesucht: höchstens eine „schlechte“ Lieferung
-                „Höchstens eine dieser Lieferungen“ bedeutet:
+                ### „Höchstens eine Lieferung“ formulieren
+
+                „Höchstens eine“ bedeutet:
 
                 $$
                 Z \le 1.
                 $$
 
-                Also:
+                Gesucht ist also:
 
                 $$
-                P(Z \le 1) = P(Z = 0) + P(Z = 1).
-                $$
-
-                Mit der Binomialformel:
-
-                $$
-                P(Z = 0) = (1-p)^{10},
-                $$
-
-                $$
-                P(Z = 1) = \binom{10}{1}\,p\,(1-p)^9 = 10p(1-p)^9.
+                P(Z \le 1).
                 $$
               </Step>
               <Step>
-                ### Mit CAS / Taschenrechner berechnen
-                Zum Beispiel:
+                ### Mit CAS berechnen
 
-                ```text
-                binomPdf(10, 0.046, 0) → P(Z = 0)
-                binomPdf(10, 0.046, 1) → P(Z = 1)
-                ```
+                <Callout type="idea" title="Taschenrechnerbefehl – Binomial Cdf">
+                  1. $\boxed{\text{menu}}$
+                  2. Wahrscheinlichkeit $(5)$
+                  3. Verteilung $(5)$
+                  4. Binomial Cdf $(B)$
+                </Callout>
 
-                Dann:
+                <Image
+                    src="/images/examples/kakaoupackungen/calc-b-2.png"
+                    width={800}
+                    height={450}
+                    alt="Taschenrechnereingabe für Binom Cdf: P(Z ≤ 1)"
+                />
 
-                $$
-                P(Z \le 1) \approx 0.924 \quad \Rightarrow \quad 92.4\,\%.
-                $$
+                $\boxed{\text{binomCdf}(10,0.046,0,1) \approx 0.924}$
               </Step>
               <Step>
                 ### Antwort
+
                 <Callout type="success">
-                  Die Wahrscheinlichkeit, dass bei **höchstens einer** der $10$ Lieferungen mehr als
-                  $2\,\%$ der Packungen ein zu geringes Füllgewicht haben, beträgt ungefähr
+                  Die Wahrscheinlichkeit, dass bei **höchstens einer** der $10$ Lieferungen mehr
+                  als $2 \,\%$ der Packungen ein zu geringes Füllgewicht haben, beträgt ungefähr
 
                   $$
-                  92.4\,\%.
+                  92{,}4 \,\%.
                   $$
                 </Callout>
               </Step>
@@ -449,6 +547,7 @@ Alle Gewichte sind in Gramm auf eine Nachkommastelle gerundet, anzugeben.
     </Accordion.Panel>
   </Accordion.Item>
 
+  {/* Aufgabe C */}
   <Accordion.Item>
     <Accordion.Heading className="not-prose">
       <Accordion.Trigger>
@@ -459,138 +558,127 @@ Alle Gewichte sind in Gramm auf eine Nachkommastelle gerundet, anzugeben.
     <Accordion.Panel>
       <Accordion.Body>
         > Unabhängig vom Sachzusammenhang ist die normalverteilte Zufallsgröße $X$ mit dem Erwartungswert
-        $\mu = 125$ und der Standardabweichung $\sigma = 2$ gegeben.
+        > $\mu = 125$ und der Standardabweichung $\sigma = 2$ gegeben.
         >
         > Betrachtet werden Intervalle $[a;b]$ mit folgenden Eigenschaften:
         >
         > - $a$ und $b$ sind beide größer als der Erwartungswert.
         > - Der Abstand vom Erwartungswert ist für $b$ doppelt so groß wie für $a$.
         >
-        > Bestimmen Sie die beiden Werte von $a$, für die gilt: $P(a \leq X \leq b) = 0,1$.
+        > Bestimmen Sie die beiden Werte von $a$, für die gilt: $P(a \le X \le b) = 0{,}1$.
 
         <Steps>
           <Step>
-            ### Zusammenhang zwischen a und b herstellen
-            Gegeben: $X \sim N(125,2^2)$.
+            ### Zusammenhang zwischen $a$ und $b$ herstellen
 
-            Beide Grenzen liegen rechts vom Erwartungswert, und der Abstand von $b$ ist doppelt so groß
-            wie der von $a$.\
-            Sei:
+            Beide Intervallgrenzen liegen rechts vom Erwartungswert $125$.
 
-            $$
-            a = 125 + d,\quad d > 0.
-            $$
-
-            Dann ist:
+            Sei der Abstand von $a$ zum Erwartungswert
 
             $$
-            b - 125 = 2(a - 125) \Rightarrow b - 125 = 2d \Rightarrow b = 125 + 2d.
-            $$
-
-            Gesucht sind die positiven Werte von $d$, für die:
-
-            $$
-            P(a \le X \le b) = 0.1.
-            $$
-          </Step>
-          <Step>
-            ### Standardisierung und Wahrscheinlichkeitsbedingung
-            Standardisierung mit
-
-            $$
-            Z = \frac{X - 125}{2}.
+            x > 0.
             $$
 
             Dann gilt:
 
             $$
-            a = 125 + d \Rightarrow z_1 = \frac{a - 125}{2} = \frac{d}{2},
+            a = 125 + x.
             $$
 
-            $$
-            b = 125 + 2d \Rightarrow z_2 = \frac{b - 125}{2} = d.
-            $$
-
-            Also:
+            Der Abstand von $b$ ist doppelt so groß:
 
             $$
-            P(a \le X \le b)
-            = P(125 + d \le X \le 125 + 2d)
-            = P\Bigl(\tfrac{d}{2} \le Z \le d\Bigr).
-            $$
-
-            Die Bedingung aus der Aufgabe wird damit zu:
-
-            $$
-            P\Bigl(\tfrac{d}{2} \le Z \le d\Bigr) = 0.1.
+            b = 125 + 2x.
             $$
           </Step>
           <Step>
-            ### Gleichung mit CAS / Taschenrechner lösen
-            Schreibe die Gleichung mit der Verteilungsfunktion $\Phi$ der Standardnormalverteilung:
+            ### Wahrscheinlichkeit als Gleichung formulieren
+
+            Gesucht sind alle $x > 0$ mit
 
             $$
-            \Phi(d) - \Phi\Bigl(\tfrac{d}{2}\Bigr) = 0.1.
+            P(a \le X \le b) = 0{,}1.
             $$
 
-            Diese Gleichung wird mit einem **Solver** im CAS/GTR numerisch gelöst.\
-            Dabei erhält man zwei positive Lösungen:
+            Mit den Ausdrücken für $a$ und $b$:
 
             $$
-            d_1 \approx 0.547,\quad d_2 \approx 2.492.
+            P(125 + x \le X \le 125 + 2x) = 0{,}1.
             $$
 
-            Zugehörige Intervallgrenzen:
+            Diese Wahrscheinlichkeit können wir direkt mit der Normalverteilungsfunktion
+            des CAS schreiben:
 
             $$
-            a_1 = 125 + d_1 \approx 125.55,\quad
-            b_1 = 125 + 2d_1 \approx 126.09,
-            $$
-
-            $$
-            a_2 = 125 + d_2 \approx 127.49,\quad
-            b_2 = 125 + 2d_2 \approx 129.98.
+            \text{normCdf}(125 + x, 125 + 2x, 125, 2) = 0{,}1.
             $$
           </Step>
           <Step>
-            ### Runden und Interpretation
-            Entsprechend der Angabe („auf eine Nachkommastelle gerundet“) erhält man:
+            ### Gleichung mit CAS lösen
 
-            - Erstes Intervall:
+            <Callout type="idea" title="Taschenrechnerbefehl – Solve mit Normal Cdf">
+              1. $\boxed{\text{menu}}$
+              2. Algebra (3)
+              3. Löse (1)
+              4. Gleichung eingeben:
+              $$
+              \text{normCdf}(125 + x, 125 + 2x, 125, 2) = 0.1
+              $$
+              und nach $x$ lösen.
+            </Callout>
+
+            Der CAS liefert zwei positive Lösungen:
 
             $$
-            a_1 \approx 125.5\ \text{g},\quad b_1 \approx 126.1\ \text{g}.
+            x_1 \approx 0{,}5, \qquad x_2 \approx 2{,}5.
             $$
-            - Zweites Intervall:
+          </Step>
+          <Step>
+            ### Intervallgrenzen berechnen
+
+            Zu $x_1$ gehören die Grenzen
 
             $$
-            a_2 \approx 127.5\ \text{g},\quad b_2 \approx 130.0\ \text{g}.
+            a_1 = 125 + x_1 \approx 125{,}5, \qquad
+            b_1 = 125 + 2x_1 \approx 126{,}0.
+            $$
+
+            Zu $x_2$ gehören die Grenzen
+
+            $$
+            a_2 = 125 + x_2 \approx 127{,}5, \qquad
+            b_2 = 125 + 2x_2 \approx 130{,}0.
             $$
 
             In beiden Fällen gilt näherungsweise:
 
             $$
-            P(a \le X \le b) \approx 0.1.
+            P(a \le X \le b) \approx 0{,}1.
             $$
           </Step>
           <Step>
             ### Antwort
+
             <Callout type="success">
-              Es gibt zwei passende Werte für $a$ (auf eine Nachkommastelle gerundet):
+              Es gibt zwei passende Werte für $a$:
 
               $$
-              a_1 \approx 125.5\ \text{g},\qquad
-              a_2 \approx 127.5\ \text{g}.
+              a_1 \approx 125{,}5 \,\text{g}, \qquad
+              a_2 \approx 127{,}5 \,\text{g}.
               $$
 
-              Die zugehörigen oberen Grenzen sind:
+              Die zugehörigen oberen Grenzen sind
 
               $$
-              b_1 \approx 126.1\ \text{g},\qquad
-              b_2 \approx 130.0\ \text{g},
+              b_1 \approx 126{,}0 \,\text{g}, \qquad
+              b_2 \approx 130{,}0 \,\text{g},
               $$
 
-              und für beide Intervalle gilt näherungsweise $P(a \le X \le b) = 0.1$.
+              und für beide Intervalle gilt näherungsweise
+
+              $$
+              P(a \le X \le b) = 0{,}1.
+              $$
             </Callout>
           </Step>
         </Steps>

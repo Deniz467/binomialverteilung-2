@@ -1,13 +1,76 @@
 ---
-title: "Stochastische Abhängigkeit"
-description: "Description of your new file."
+title: Stochastische Abhängigkeit & Unabhängigkeit
+description: Grundlagen der stochastischen Abhängigkeit und Unabhängigkeit von Ereignissen.
 ---
 
-Zwei Ereignisse sind stochastisch abhängig, wenn das Produkt über Einzelwahrscheinlichkeiten nicht
-mit der Wahrscheinlichkeit ihres gemeinsamen Eintretens übereinstimmt.
+import {OverviewCard} from "../../../../components/OverviewCard";
+
+
+<OverviewCard>
+  - Unabhängig: Ereignisse beeinflussen sich nicht
+  - Abhängig: Ereignisse beeinflussen sich
+  - Unabhängig, wenn:
+  $$P(A \cap B) = P(A) \cdot P(B)$$
+  - Abhängig, wenn:
+  $$P(A \cap B) \neq P(A) \cdot P(B)$$
+  - Bei Unabhängigkeit bleibt die bedingte Wahrscheinlichkeit gleich:
+  $$P(A \mid B) = P(A)$$
+
+</OverviewCard>
+
+## Was bedeutet stochastische Unabhängigkeit?
+
+Zwei Ereignisse sind **stochastisch unabhängig**, wenn das Eintreten des einen Ereignisses
+**keinen Einfluss** darauf hat, wie wahrscheinlich das andere Ereignis ist.
+
+Typische Beispiele:
+
+- Münzwurf und Würfelwurf
+- Zwei unabhängige Maschinen, die unterschiedlich häufig ausfallen
+- Zufällige Auswahl aus zwei getrennten Urnen
+
+
+### Mathematische Eigenschaften
+
+Für unabhängige Ereignisse $A$ und $B$ gilt:
+
+1. **Bedingte Wahrscheinlichkeit ändert sich nicht**
 
 $$
-\boxed{
+P(A \mid B) = P(A) \qquad\text{und}\qquad P(B \mid A) = P(B)
+$$
+
+2. **Produktregel**
+
+$$
+P(A \cap B) = P(A) \cdot P(B)
+$$
+
+Diese Gleichung wird oft verwendet, um Unabhängigkeit **nachzuweisen**.
+
+
+## Was bedeutet stochastische Abhängigkeit?
+
+Zwei Ereignisse sind **stochastisch abhängig**, wenn das Eintreten des einen Ereignisses
+die Wahrscheinlichkeit des anderen **beeinflusst**.
+
+Beispiele:
+
+- Das Ziehen einer roten Karte **ohne Zurücklegen** beeinflusst spätere Ziehungen
+- Wetterlagen können sich gegenseitig beeinflussen
+- Testergebnisse („positiv“) hängen vom tatsächlichen Zustand („krank / gesund“) ab
+
+
+### Mathematische Eigenschaften
+
+Ereignisse sind abhängig, wenn **die Produktregel nicht gilt**:
+
+$$
 P(A \cap B) \neq P(A) \cdot P(B)
-}
+$$
+
+oder wenn sich die bedingte Wahrscheinlichkeit **ändert**:
+
+$$
+P(A \mid B) \neq P(A)
 $$

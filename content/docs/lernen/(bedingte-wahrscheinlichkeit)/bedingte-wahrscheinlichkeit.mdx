@@ -1,20 +1,34 @@
 ---
-title: "Bedingte Wahrscheinlichkeit"
-description: "Description of your new file."
+title: Bedingte Wahrscheinlichkeit
+description: Grundlagen der bedingten Wahrscheinlichkeit.
 ---
 
 import {Callout} from "fumadocs-ui/components/callout";
+import {OverviewCard} from "../../../../components/OverviewCard";
 
 
-> Bedingte Wahrscheinlichkeit beschreibt, wie sich die Wahrscheinlichkeit eines Ereignisses ändert, wenn bereits bekannt ist, dass ein anderes Ereignis eingetreten ist.
+<OverviewCard>
+  - Wahrscheinlichkeit für ein Ereignis, **wenn ein anderes bereits eingetreten ist**
+  - Schreibweise: $P(A \mid B)$ oder $P_B(A)$
+  - Formel: $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$
+  - Wichtig: $P(B) > 0$
+</OverviewCard>
 
-Die bedingte Wahrscheinlichkeit kann auf verschiedene Arten ausgedrückt werden:
+## Was bedeutet bedingte Wahrscheinlichkeit?
+
+Die **bedingte Wahrscheinlichkeit** beschreibt, wie sich die Wahrscheinlichkeit eines Ereignisses verändert,
+wenn bereits feststeht, dass ein anderes Ereignis eingetreten ist.
+
+Dafür verwendet man die Schreibweisen:
 
 $$
-\boxed{P(A \mid B)} \qquad \boxed{P_B(A)}
+P(A \mid B) \qquad\text{oder}\qquad P_B(A)
 $$
 
-Hierbei tritt Ereignis $A$ **unter der Bedingung**, dass Ereignis $B$ bereits eingetreten ist, ein.
+Beides bedeutet: *$A$ tritt unter der Bedingung ein, dass $B$ bereits eingetreten ist.*
+
+
+## Formel der bedingten Wahrscheinlichkeit
 
 <Callout type="info" title="Formel">
 
@@ -22,11 +36,26 @@ Hierbei tritt Ereignis $A$ **unter der Bedingung**, dass Ereignis $B$ bereits ei
   P(A \mid B) = \frac{P(A \cap B)}{P(B)}
   $$
 
-  - $A$: Ereignis, dessen Wahrscheinlichkeit man unter einer Bedingung bestimmen möchte.
-  - $B$: Erignis, das bereits **eingetreten** ist
-  - $P(A \mid B)$: Bedingte Wahrscheinlichkeit, dafür dass $A$ eintritt, **unter der Voraussetzung**, dass $B$ eingetreten ist
-  - $A \cap B $: Schnittmenge der Ereignisse; beide Ereignisse treten gleichzeitig ein
-  - $P(A \cap B)$: Wahrscheinlichkeit dafür, dass sowohl $A$ als auch $B$ eintreten
-  - $P(B)$: Wahrscheinlichkeit dafür, dass $B$ eintritt
+
+  - **$A$:** Ereignis, dessen Wahrscheinlichkeit man untersuchen möchte
+  - **$B$:** Ereignis, von dem man weiß, dass es eingetreten ist
+  - **$P(A \mid B)$:** Wahrscheinlichkeit für A **unter der Voraussetzung**, dass B sicher ist
+  - **$A \cap B$:** Beide Ereignisse treten gleichzeitig ein
+  - **$P(A \cap B)$:** Wahrscheinlichkeit dafür, dass A und B gemeinsam auftreten
+  - **$P(B)$:** Wahrscheinlichkeit dafür, dass B eintritt (und somit die Bedingung erfüllt ist)
 
 </Callout>
+
+
+## Warum wird die bedingte Wahrscheinlichkeit benötigt?
+
+Bedingte Wahrscheinlichkeiten spielen eine wichtige Rolle, wenn Informationen bereits bekannt sind
+oder sich der Kontext verändert. Beispiele:
+
+- Die Wahrscheinlichkeit, dass jemand krank ist, **wenn** ein Test positiv war.
+- Die Wahrscheinlichkeit, dass eine gezogene Karte rot ist, **wenn** man weiß, dass sie ein Bild zeigt.
+- Die Wahrscheinlichkeit, dass es regnet, **wenn** dunkle Wolken aufgezogen sind.
+
+Solche Situationen kommen in vielen realen Anwendungen vor – in Statistik, Medizin, Informatik,
+Datenanalyse und im Alltag.
+

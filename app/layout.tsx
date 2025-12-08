@@ -13,6 +13,7 @@ const inter = Inter({
 const description = "Erklärungen, Aufgaben und Formeln zur Binomialverteilung – kompakt für Oberstufe, Klausuren und Abitur.";
 
 export const metadata: Metadata = {
+  metadataBase: "https://binomialverteilung.app",
   title: {
     default: "Binomialverteilung – Lernen, Üben, Nachschlagen",
     template: "%s | Binomialverteilung",
