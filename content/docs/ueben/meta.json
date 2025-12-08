@@ -3,6 +3,8 @@
   "description": "The description of root folder (optional)",
   "root": true,
   "pages": [
+    "index",
+    "goldene-zehn",
     "..."
   ]
 }

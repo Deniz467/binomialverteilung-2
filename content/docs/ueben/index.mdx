@@ -1,13 +1,259 @@
 ---
-title: Hello
-description: Your first document
+title: Ein Spiel mit dem Glücksrad
+description: Untersuchungen zu Zufallsergebnissen, Gewinnchancen und Spielstrategien beim Drehen eines Glücksrads.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+import {
+  InteractiveExercise,
+  InteractiveExerciseIntro,
+  InteractiveExerciseTask,
+  InteractiveExerciseTaskPrompt,
+  InteractiveExerciseTaskQuestion,
+  InteractiveExerciseTaskHints,
+  InteractiveExerciseTaskHint,
+  InteractiveExerciseTaskSolution,
+} from "../../../components/exercise/InteractiveExercise";
 
-## What is Next?
+<InteractiveExercise title="Ein Spiel mit dem Glücksrad">
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
-</Cards>
+  <InteractiveExerciseIntro>
+    Die Sektoren des abgebildeten Glücksrads sind gleich groß und mit
+    den Zahlen von $0$ bis $9$ beschriftet.
+  </InteractiveExerciseIntro>
+
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe A --------------------- */}
+  {/* ------------------------------------------------------ */}
+
+  <InteractiveExerciseTask id="A1" label="Aufgabe A" cas>
+
+    <InteractiveExerciseTaskPrompt>
+      Das Glücksrad wird zwanzigmal gedreht.
+    </InteractiveExerciseTaskPrompt>
+
+    <InteractiveExerciseTaskQuestion>
+      Bestimmen Sie die Wahrscheinlichkeiten der Ereignisse $A$ und $B$.\
+      $A$: „Es wird genau siebenmal eine ungerade Zahl erzielt.“\
+      $B$: „Es wird mehr als siebenmal und höchstens zwölfmal eine ungerade Zahl erzielt.“
+    </InteractiveExerciseTaskQuestion>
+
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Formulieren Sie eine Zufallsvariable $X =$ „Anzahl der erzielten ungeraden Zahlen“
+        und überlegen Sie, welche Verteilung $X$ hat. Bestimmen Sie dazu $n$ und $p$.
+      </InteractiveExerciseTaskHint>
+
+      <InteractiveExerciseTaskHint number={2}>
+        Drücken Sie $P(A)$ und $P(B)$ als $P(X = 7)$ bzw. $P(8 \le X \le 12)$ einer
+        Binomialverteilung aus und berechnen Sie die Werte mit CAS oder Binomialtabelle.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+
+    <InteractiveExerciseTaskSolution>
+      $X$: Anzahl der erzielten ungeraden Zahlen\
+      $X$ ist binomialverteilt mit $n = 20$ und $p = 0,5$.
+      $$
+      \begin{aligned}
+      P(A) &= P(X = 7) &\approx& 7\,\% \\
+      P(B) &= P(8 \le X \le 12) &\approx& 74\,\%
+      \end{aligned}
+      $$
+    </InteractiveExerciseTaskSolution>
+
+  </InteractiveExerciseTask>
+
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe B --------------------- */}
+  {/* ------------------------------------------------------ */}
+
+  <InteractiveExerciseTask id="B1" label="Aufgabe B" cas>
+    <InteractiveExerciseTaskPrompt>
+      Das Glücksrad wird zweimal gedreht.
+    </InteractiveExerciseTaskPrompt>
+
+    <InteractiveExerciseTaskQuestion>
+      Untersuchen Sie, ob die Ereignisse $C$ und $D$ stochastisch unabhängig sind.\
+      $C$: „Die Summe der erzielten Zahlen ist kleiner als 4.“\
+      $D$: „Das Produkt der erzielten Zahlen ist 2 oder 3.“
+    </InteractiveExerciseTaskQuestion>
+
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Stellen Sie die Ergebnismenge aller möglichen Paare $(\text{erste Drehung}; \text{zweite Drehung})$
+        auf und markieren Sie, bei welchen Ergebnissen $C$ bzw. $D$ eintritt.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Bestimmen Sie $P(C)$, $P(D)$ und $P(C \cap D)$ und prüfen Sie mithilfe der
+        Bedingung $P(C \cap D) = P(C) \cdot P(D)$, ob die Ereignisse stochastisch
+        unabhängig sind.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+
+    <InteractiveExerciseTaskSolution>
+      Bei Verwendung der Ergebnismenge ${(0; 0), (0; 1), ... , (1; 0), ... , (9; 9)}$ ist die
+      Summe der erzielten Zahlen bei zehn Ergebnissen kleiner als $4$. Bei zwei dieser
+      zehn Ergebnisse, aber nur bei vier Ergebnissen von allen ist das Produkt der
+      erzielten Zahlen $2$ oder $3$. Damit stimmen die Anteile der Ergebnisse mit dem
+      Produkt $2$ oder $3$ unter allen Ergebnissen und unter denen mit einer Summe,
+      die kleiner als $4$ ist, nicht überein. Die beiden Ereignisse sind also stochastisch
+      abhängig.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe C --------------------- */}
+  {/* ------------------------------------------------------ */}
+  <InteractiveExerciseTask id="C1" label="Aufgabe C" cas>
+    <InteractiveExerciseTaskPrompt>
+      Mit dem Glücksrad wird ein Spiel durchgeführt. Jeder Spieler darf das Glücksrad beliebig oft
+      drehen. Beendet er das Spiel selbst, bevor er eine „$0$“ erzielt, so wird ihm die Summe der
+      erzielten Zahlen in Euro ausgezahlt. Erzielt er eine „$0$“, so ist das Spiel dadurch beendet und
+      es erfolgt keine Auszahlung.
+    </InteractiveExerciseTaskPrompt>
+
+    <InteractiveExerciseTaskQuestion>
+      Bei einem Spieler beträgt nach mehrmaligem Drehen des Glücksrads die Summe der
+      erzielten Zahlen $60$. Er dreht das Glücksrad genau ein weiteres Mal.\
+      Berechnen Sie den Erwartungswert für den ausgezahlten Betrag.
+    </InteractiveExerciseTaskQuestion>
+
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Überlegen Sie, welche Auszahlungen beim letzten Drehen möglich sind
+        (keine Auszahlung bei „$0$“, sonst $61$ bis $69$ Euro) und mit welchen
+        Wahrscheinlichkeiten diese Werte auftreten.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Verwenden Sie die Erwartungswertformel $E(X) = \sum x_i \cdot P(X = x_i)$
+        mit den möglichen Auszahlungsbeträgen und deren Wahrscheinlichkeiten.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+
+    <InteractiveExerciseTaskSolution>
+      Erwartungswert in Euro:
+      $$
+      \frac{1}{10} \cdot (61 + 62 + 63 + 64 + 65 + 66 + 67 + 68 + 69) = 58,5 \, [\text{€}]
+      $$
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe D --------------------- */}
+  {/* ------------------------------------------------------ */}
+  <InteractiveExerciseTask id="D1" label="Aufgabe D" cas>
+    <InteractiveExerciseTaskPrompt>
+      Mit dem Glücksrad wird ein Spiel durchgeführt. Jeder Spieler darf das Glücksrad beliebig oft
+      drehen. Beendet er das Spiel selbst, bevor er eine „$0$“ erzielt, so wird ihm die Summe der
+      erzielten Zahlen in Euro ausgezahlt. Erzielt er eine „$0$“, so ist das Spiel dadurch beendet und
+      es erfolgt keine Auszahlung.
+    </InteractiveExerciseTaskPrompt>
+
+    <InteractiveExerciseTaskQuestion>
+      Der Spieler dreht das Glücksrad bis er eine „$0$“ erzielt, aber höchstens $n$-mal. Der
+      Erwartungswert für die Auszahlung beträgt in diesem Fall $5n \cdot 0,9^n$.
+      Beurteilen Sie die folgende Aussage:\
+      „Es gibt zwei, aber nicht drei aufeinanderfolgende Werte von $n$, für die
+      die Erwartungswerte für die Auszahlung übereinstimmen.“
+    </InteractiveExerciseTaskQuestion>
+
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Setzen Sie für zwei aufeinanderfolgende Werte $n$ und $n+1$ die Erwartungswerte
+        gleich: $5n \cdot 0{,}9^n = 5(n+1) \cdot 0{,}9^{\,n+1}$.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Kürzen Sie die Gleichung so weit wie möglich, lösen Sie nach $n$ auf und prüfen
+        Sie, für welche ganzzahligen Werte von $n$ die Erwartungswerte übereinstimmen.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+
+    <InteractiveExerciseTaskSolution>
+      $$
+      \begin{aligned}
+      &5n \cdot \frac{9}{10} ^ n \\
+      &= 5n \cdot (n + 1) \cdot \frac{9}{10} ^{n+1} \\
+      &\Leftrightarrow n = 9
+      \end{aligned}
+      $$
+      Damit sind $9$ und $10$ die einzigen aufeinanderfolgenden Werte von $n$, für die
+      die Erwartungswerte für die Auszahlung übereinstimmen. Die Aussage ist also
+      richtig.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe E --------------------- */}
+  {/* ------------------------------------------------------ */}
+  <InteractiveExerciseTask id="E1" label="Aufgabe E" cas>
+    <InteractiveExerciseTaskPrompt>
+      Betrachtet wird nun ein Glücksrad mit $10$ nicht gleich großen Sektoren. Die Sektoren sind
+      mit den Zahlen von $0$ bis $9$ beschriftet.
+    </InteractiveExerciseTaskPrompt>
+
+    <InteractiveExerciseTaskQuestion>
+      Bei $80$ Drehungen wird zwölfmal die „$0$“ erzielt. Auf dieser Grundlage wird zur
+      Sicherheitswahrscheinlichkeit $95 \, \%$ ein Konfidenzintervall für die Wahrscheinlichkeit,
+      bei einer Drehung die „$0$“ zu erzielen, bestimmt.
+      Begründen Sie, dass die obere Grenze des Konfidenzintervalls größer als $0,1$ ist.
+    </InteractiveExerciseTaskQuestion>
+
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Bestimmen Sie zunächst die Punktschätzung für die Trefferwahrscheinlichkeit der „$0$“:
+        $\hat{p} = \frac{12}{80}$.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Verwenden Sie die Konfidenzintervall-Formel
+        $\hat{p} \pm 1{,}96 \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$ mit $n = 80$
+        und vergleichen Sie die obere Grenze des Intervalls mit $0{,}1$.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+
+    <InteractiveExerciseTaskSolution>
+      $\frac{12}{80}$ ist größer als $0,1$ und liegt innerhalb des Konfidenzintervalls.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe F --------------------- */}
+  {/* ------------------------------------------------------ */}
+  <InteractiveExerciseTask id="F1" label="Aufgabe F" cas>
+    <InteractiveExerciseTaskPrompt>
+      Betrachtet wird nun ein Glücksrad mit $10$ nicht gleich großen Sektoren. Die Sektoren sind
+      mit den Zahlen von $0$ bis $9$ beschriftet.
+    </InteractiveExerciseTaskPrompt>
+
+    <InteractiveExerciseTaskQuestion>
+      Bestimmen Sie die kleinste Anzahl an Drehungen, für die Folgendes gilt:
+      > Wenn man bei genau $15\, \%$ der Drehungen die „$0$“ erzielt, dann steht dies bei einer
+      > Sicherheitswahrscheinlichkeit von $95\, \%$ nicht in Einklang mit der Annahme, dass beim
+      > Drehen des Glücksrads die „$0$“ mit einer Wahrscheinlichkeit von $10\,\%$ erzielt wird.
+    </InteractiveExerciseTaskQuestion>
+
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Formulieren Sie zur Annahme $p = 0{,}1$ ein $95\,\%$-Konfidenzintervall mit der
+        Normalapproximation: $0{,}1 \pm 1{,}96 \cdot \sqrt{\frac{0{,}1 \cdot (1-0{,}1)}{n}}$.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Fordern Sie, dass $0{,}15$ größer als die obere Intervallgrenze ist, und lösen Sie die
+        entstehende Ungleichung nach $n$ auf. Runden Sie anschließend auf die kleinste
+        ganze Zahl nach oben.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+
+    <InteractiveExerciseTaskSolution>
+      Die Erfolgswahrscheinlichkeit $p = 0,1$ steht nicht im Einklang mit dem
+      Stichprobenergebnis $h = 0,15$, wenn $h$ größer als die obere Grenze des
+      $95\, \%$-Prognoseintervalls ist:\
+      $0,15 - 0,1 > 1,96 \cdot \sqrt{\frac{0,1 \cdot (1 - 0,1)}{n}}$ führt auf
+      $n > 138$.\
+      Damit ist $140$ die kleinste gesuchte Anzahl an Drehungen, da hier bei genau
+      $15\, \%$ der Drehungen die „$0$“ erzielt werden kann.\
+      Hinweis: Bei Verwendung anderer Näherungsverfahren können sich
+      abweichende Ergebnisse ergeben.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+</InteractiveExercise>

@@ -8,14 +8,14 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Card, Button, Chip } from "@heroui/react";
+import {Card, Button, Chip} from "@heroui/react";
 
 /* -------------------------------------------------------
  * TYPES
  * ----------------------------------------------------- */
 
-type IntroProps = { children: ReactNode };
-type SlotProps = { children: ReactNode };
+type IntroProps = { children?: ReactNode };
+type SlotProps = { children?: ReactNode };
 
 type TaskProps = {
   id: string;
@@ -72,12 +72,12 @@ type InteractiveExerciseComponent = React.FC<InteractiveExerciseProps> &
  * DUMB SUBCOMPONENTS
  * ----------------------------------------------------- */
 
-const Intro: React.FC<IntroProps> = ({ children }) => <>{children}</>;
-const TaskPrompt: React.FC<SlotProps> = ({ children }) => <>{children}</>;
-const TaskQuestion: React.FC<SlotProps> = ({ children }) => <>{children}</>;
-const TaskHints: React.FC<SlotProps> = ({ children }) => <>{children}</>;
-const TaskHint: React.FC<TaskHintProps> = ({ children }) => <>{children}</>;
-const TaskSolution: React.FC<SlotProps> = ({ children }) => <>{children}</>;
+const Intro: React.FC<IntroProps> = ({children}) => <>{children}</>;
+const TaskPrompt: React.FC<SlotProps> = ({children}) => <>{children}</>;
+const TaskQuestion: React.FC<SlotProps> = ({children}) => <>{children}</>;
+const TaskHints: React.FC<SlotProps> = ({children}) => <>{children}</>;
+const TaskHint: React.FC<TaskHintProps> = ({children}) => <>{children}</>;
+const TaskSolution: React.FC<SlotProps> = ({children}) => <>{children}</>;
 
 type TaskComponent = React.FC<TaskProps> & {
   Prompt: typeof TaskPrompt;
@@ -87,7 +87,7 @@ type TaskComponent = React.FC<TaskProps> & {
   Solution: typeof TaskSolution;
 };
 
-const Task: TaskComponent = ({ children }) => <>{children}</>;
+const Task: TaskComponent = ({children}) => <>{children}</>;
 Task.Prompt = TaskPrompt;
 Task.Question = TaskQuestion;
 Task.Hints = TaskHints;
@@ -99,7 +99,7 @@ Task.Solution = TaskSolution;
  * ----------------------------------------------------- */
 
 function extractTaskFromElement(el: React.ReactElement<TaskProps>): InternalTask {
-  const { id, label, cas } = el.props;
+  const {id, label, cas} = el.props;
 
   const childrenArray = Children.toArray(el.props.children).filter(
       (c): c is React.ReactElement<{ children?: ReactNode }> => isValidElement(c),
@@ -233,7 +233,7 @@ function InteractiveExerciseBase({
     if (!currentTask) return;
 
     const prev: PersistedState =
-        persistedRef.current ?? ({ index, tasks: {} } as PersistedState);
+        persistedRef.current ?? ({index, tasks: {}} as PersistedState);
 
     const next: PersistedState = {
       index,
@@ -279,7 +279,8 @@ function InteractiveExerciseBase({
 
   if (!tasks.length) {
     return (
-        <Card className="mx-auto mt-8 max-w-3xl rounded-2xl border border-default-200/70 bg-content1/80 p-6 shadow-lg backdrop-blur-sm dark:border-default-200/40 dark:bg-content1/20">
+        <Card
+            className="mx-auto mt-8 max-w-3xl rounded-2xl border border-default-200/70 bg-content1/80 p-6 shadow-lg backdrop-blur-sm dark:border-default-200/40 dark:bg-content1/20">
           <p className="text-sm text-foreground/70 dark:text-foreground/80">
             Keine Aufgaben gefunden.
           </p>
@@ -288,7 +289,8 @@ function InteractiveExerciseBase({
   }
 
   return (
-      <Card className="not-prose mx-auto mt-8 w-full max-w-3xl rounded-2xl border border-default-200/70 bg-content1/80 p-6 shadow-lg backdrop-blur-sm dark:border-default-200/40 dark:bg-content1/20">
+      <Card
+          className="mx-auto mt-8 w-full max-w-3xl rounded-2xl border border-default-200/70 bg-content1/80 p-6 shadow-lg backdrop-blur-sm dark:border-default-200/40 dark:bg-content1/20">
         {/* HEADER */}
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
@@ -321,10 +323,12 @@ function InteractiveExerciseBase({
         </div>
 
         {/* BODY */}
-        <div className="mt-4 space-y-4 rounded-2xl border border-dashed border-default-200 bg-content2/70 p-5 dark:border-default-200/40 dark:bg-default/10">
+        <div
+            className="mt-4 space-y-4 rounded-2xl border border-dashed border-default-200 bg-content2/70 p-5 dark:border-default-200/40 dark:bg-default/10">
           {/* Intro & Prompt */}
           {(intro || task.prompt) && (
-              <div className="pl-4 border-l-2 border-green-300/50 text-foreground/80 text-[15px] dark:border-green-900/70 dark:text-foreground/80">
+              <div
+                  className="pl-4 border-l-2 border-green-300/50 text-foreground/80 text-[15px] dark:border-green-900/70 dark:text-foreground/80">
                 {intro}
                 {task.prompt}
               </div>
@@ -332,7 +336,8 @@ function InteractiveExerciseBase({
 
           {/* QUESTION */}
           {task.question && (
-              <div className="rounded-lg border border-green-200 bg-green-50/40 px-3 py-2 dark:border-green-900 dark:bg-green-950/40">
+              <div
+                  className="rounded-lg border border-green-200 bg-green-50/40 px-3 py-2 dark:border-green-900 dark:bg-green-950/40">
                 <div className="text-[15px]">{task.question}</div>
               </div>
           )}
@@ -352,13 +357,15 @@ function InteractiveExerciseBase({
                 </Button>
 
                 {shownHints > 0 && (
-                    <div className="pl-3 border-l-2 border-green-200 space-y-2 dark:border-green-900/80">
+                    <div
+                        className="pl-3 border-l-2 border-green-200 space-y-2 dark:border-green-900/80">
                       {task.hints.slice(0, shownHints).map((hint, i) => (
                           <div
                               key={i}
                               className="bg-default-100/80 dark:bg-default/10 rounded-lg px-3 py-2"
                           >
-                            <div className="text-[11px] uppercase font-semibold text-foreground/50 dark:text-foreground/60">
+                            <div
+                                className="text-[11px] uppercase font-semibold text-foreground/50 dark:text-foreground/60">
                               Tipp {hint.number ?? i + 1}
                             </div>
 
@@ -382,8 +389,10 @@ function InteractiveExerciseBase({
                 </Button>
 
                 {showSolution && (
-                    <div className="rounded-xl bg-gradient-to-r from-emerald-50 to-sky-50 px-3 py-3 dark:from-emerald-950/60 dark:to-sky-950/40">
-                      <div className="text-[11px] uppercase font-semibold text-emerald-700 dark:text-emerald-300">
+                    <div
+                        className="rounded-xl bg-linear-to-r from-emerald-50 to-sky-50 px-3 py-3 dark:from-emerald-950/60 dark:to-sky-950/40">
+                      <div
+                          className="text-[11px] uppercase font-semibold text-emerald-700 dark:text-emerald-300">
                         Musterlösung
                       </div>
                       <div className="mt-1 text-[15px]">{task.solution}</div>

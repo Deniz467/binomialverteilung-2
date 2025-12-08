@@ -1,0 +1,209 @@
+---
+title: Die goldene Zehn
+description: Untersuchungen zu Punktzahlen, Gewinnwahrscheinlichkeiten und Auszahlungsstrukturen im Würfelspiel „Die goldene Zehn“
+---
+
+import {
+  InteractiveExercise,
+  InteractiveExerciseIntro, InteractiveExerciseTask,
+  InteractiveExerciseTaskHint, InteractiveExerciseTaskHints,
+  InteractiveExerciseTaskPrompt, InteractiveExerciseTaskQuestion, InteractiveExerciseTaskSolution
+} from "../../../components/exercise/InteractiveExercise";
+
+
+<InteractiveExercise title="Die goldene Zehn">
+  <InteractiveExerciseIntro>
+
+    Das Spiel „Die goldene Zehn“ wird mit einem idealen Würfel gespielt, bei dem eine Seitenfläche
+    mit einem „$V$“, zwei Seitenflächen mit einer „$2$“, zwei mit einer „$5$“ und eine mit einer
+    „$10$“ bedruckt sind.\
+    Es gelten folgende Spielregeln:
+    - Zu Beginn eines Spiels beträgt die Punktzahl des Spielers null.
+    - Zeigt der Würfel nach einem Wurf eine Zahl, wird diese zur bisherigen Punktzahl addiert.
+    - Der Spieler gewinnt, wenn er genau die Punktzahl $10$ erreicht.
+    - Er verliert, wenn er eine Punktzahl größer als $10$ erreicht oder ein „$V$“ würfelt.
+    - Das Spiel ist beendet, wenn der Spieler gewonnen oder verloren hat.
+
+    Der Spieler zahlt vor dem Spiel einen Einsatz von einem Euro an den Spielleiter. Gewinnt der
+    Spieler, so bekommt er pro Wurf in diesem Spiel zwei Euro ausgezahlt.
+  </InteractiveExerciseIntro>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe A --------------------- */}
+  {/* ------------------------------------------------------ */}
+
+  <InteractiveExerciseTask id="A1" label="Aufgabe A" cas>
+    <InteractiveExerciseTaskPrompt>
+      Das Spiel wird einmal gespielt.
+    </InteractiveExerciseTaskPrompt>
+    <InteractiveExerciseTaskQuestion>
+      Bestimmen Sie die Wahrscheinlichkeit dafür, dass der Spieler mit zwei Würfen die Punktzahl
+      $12$ erreicht.\
+      Die Zufallsgröße $X$ beschreibt den an den Spieler ausgezahlten Betrag in Euro.\
+      Für die Wahrscheinlichkeitsverteilung von $X$ gilt:
+
+      | $k$ | $0$ | $2$ | $4$ | $10$ |
+      |----------|-------------------|---------------|---------------|-----------------|
+      | $P(X=k)$ | $\frac{349}{486}$ | $\frac{1}{6}$ | $\frac{1}{9}$ | $\frac{1}{253}$ |
+
+    </InteractiveExerciseTaskQuestion>
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Bestimmen Sie zunächst alle möglichen Ergebnisse der zwei Würfe, die zusammen $12$ ergeben
+        könnten.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Prüfen Sie, welche dieser Ergebnisse nach den Würfelwahrscheinlichkeiten tatsächlich möglich
+        sind.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+    <InteractiveExerciseTaskSolution>
+      Der Spieler erreicht nur dann $12$ Punkte nach zwei Würfen, falls er erst eine $2$ und dann
+      eine $10$ würfelt. Die Wahrscheinlichkeit dafür ist $\frac{2}{6} \cdot \frac{1}{6} =
+      \frac{1}{18}$.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe B --------------------- */}
+  {/* ------------------------------------------------------ */}
+
+  <InteractiveExerciseTask id="B1" label="Aufgabe B" cas>
+    <InteractiveExerciseTaskPrompt/>
+    <InteractiveExerciseTaskQuestion>
+
+      Begründen Sie, dass $X$ nur die Werte $0, \, 2, \, 4$ oder $10$ annehmen kann.\
+      Begründen Sie, dass das Spiel nicht fair ist.
+      Untersuchen Sie, ob beu unverändertem Einsatz von einem Euro der Auszahlungsbetrag
+      pro Wurf so verändert werden kann, dass das Spiel fair wird.
+
+    </InteractiveExerciseTaskQuestion>
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Überlegen Sie, bei welchen Ereignissen der Spieler überhaupt gewinnen kann.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Nutzen Sie den Erwartungswert, um die Fairness des Spiels zu überprüfen.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+    <InteractiveExerciseTaskSolution>
+      Der Spieler hat genau drei Möglichkeiten zu gewinnen:
+      1. Wenn der Spieler im ersten Wurf eine $10$ erreicht, bekommt er $2$ Euro ausgezahlt ($X =
+      2$).
+      2. Wenn er im ersten und im zweiten Wurf je eine $5$ erreicht, bekommt er $4$ Euro ausgezahlt
+      ($X = 4$).
+      3. Wenn er in den ersten fünf Würfen jeweils eine $2$ erreicht, bekommt er $10$ Euro
+      ausgezahlt ($X = 10$).
+
+      Wenn er verliert, bekommt er nichts ausgezahlt ($X = 0$).\
+      Also kann $X$ nur die vier angegebenen Werte annehmen.
+
+      Für den Erwartungswert von $X$ folgt: $E(X) = 2 \cdot \frac{1}{6} + 4 \cdot \frac{1}{9} + 10
+      \cdot \frac{1}{243} = \frac{199}{243}
+      <
+      1$.
+
+      Das Spiel ist nicht fair, da der zu erwartende Auszahlungsbetrag kleiner als der Einsatz ist.
+      Damit das Spiel fair ist, muss der zu erwartende Auszahlungsbetrag mit dem Einsatz
+      übereinstimmen: $a \cdot \frac{1}{6} + 2 \cdot a \cdot \frac{1}{9} + 5 \cdot a \cdot
+      \frac{1}{243} = 1$. Daraus folgt $a = \frac{486}{199}$.\
+      Da dieser Betrag nicht in ganzen Cent ausgezahlt werden kann, lässt sich der Auszahlungsbetrag
+      nicht so verändern, dass das Spiel fair wird.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe C --------------------- */}
+  {/* ------------------------------------------------------ */}
+
+  <InteractiveExerciseTask id="C1" label="Aufgabe C" cas>
+    <InteractiveExerciseTaskPrompt/>
+    <InteractiveExerciseTaskQuestion>
+
+      Bestimmen Sie die Wahrscheinlichkeit dafür, dass der Spieler von $120$ Spielen
+      mindestens $30$ und höchsten $50$ gewinnt.\
+      Erläutern Sie, welche Wahrscheinlichkeit im Sachzusammenhang des Spiels „Die goldene Zehn“
+      mit dem Term
+      $1-19 \cdot \frac{349}{486} \cdot (\frac{137}{486})^{18}$ berechnet werden kann.
+
+    </InteractiveExerciseTaskQuestion>
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Bestimmen Sie zunächst $p$, die Wahrscheinlichkeit, ein einzelnes Spiel zu gewinnen.
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Nutzen Sie anschließend die Binomialverteilung für $n = 120$ und $p$.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+    <InteractiveExerciseTaskSolution>
+      Für die Wahrscheinlichkeit $p$ dafür, dass der Spieler ein Spiel gewinnt, gilt:
+      $$
+      p = 1 - P(X = 0) = 1 - \frac{349}{486} = \frac{137}{486}
+      $$
+
+      Die Zufallsgröße $Y$, die die Anzahl der gewonnenen Spiele von $120$ Spielen beschreibt, ist
+      binomialverteilt mit den Parametern $n = 120$ und $p = \frac{137}{486}$.
+      $$
+      P(30 \le Y \le 50) = \sum_{k = 30}^{50} \binom{120}{k} \cdot \left(\frac{137}{486}\right)^k
+      \cdot \left(\frac{349}{486}\right)^{120 - k} \approx 0{,}809
+      $$
+      Die Wahrscheinlichkeit beträgt etwa $80,9 \, \%$.\
+      Wenn das Spiel $19$-mal gespielt wird und die Zufallsgröße $Z$ die Anzahl der Spiele
+      beschreibt,
+      die der Spieler gewinnt, dann ist $Z$ binomialverteilt mit den Parametern
+      $n = 19$ und $p = \frac{137}{486}$.
+
+      Also gilt:
+      $P(Z = 18) = \binom{19}{18} \cdot \left(\frac{137}{486}\right)^{18} \cdot \left(1 -
+      \frac{137}{486}\right)^{19 - 18} = 19 \cdot \frac{349}{486} \cdot
+      \left(\frac{137}{486}\right)^{18}$.
+
+      Mit dem angegebenen Term kann also die Wahrscheinlichkeit dafür berechnet werden, dass der
+      Spieler nicht genau $18$-mal gewinnt.
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+
+  {/* ------------------------------------------------------ */}
+  {/* ---------------------- Aufgabe D --------------------- */}
+  {/* ------------------------------------------------------ */}
+
+  <InteractiveExerciseTask id="D1" label="Aufgabe D" cas>
+    <InteractiveExerciseTaskPrompt/>
+    <InteractiveExerciseTaskQuestion>
+
+      Unabhängig vom Sachzusammenhang ist über eine Urne Folgendes bekannt:
+      - In der Urne befinden sich neben anderen Kugeln genau fünf gelbe Kugeln.
+      - Es werden zwei Kugeln gleichzeitig aus der Urne gezogen. Die Wahrscheinlichkeit, genau
+      eine gelbe Kugel zu erhalten, beträgt $\frac{1}{3}$.
+
+      Leiten Sie eine Gleichung zur Bestimmung der Anzahl aller Kugeln in der Urne her.
+
+    </InteractiveExerciseTaskQuestion>
+    <InteractiveExerciseTaskHints>
+      <InteractiveExerciseTaskHint number={1}>
+        Nutzen Sie die Darstellung aller zweifachen Ziehungen: ($g$,$g$), ($g$,$n$), ($n$,$g$),
+        ($n$,$n$).
+      </InteractiveExerciseTaskHint>
+      <InteractiveExerciseTaskHint number={2}>
+        Verwenden Sie die Regel für Ziehen ohne Zurücklegen, um die Pfadwahrscheinlichkeiten
+        auszudrücken.
+      </InteractiveExerciseTaskHint>
+    </InteractiveExerciseTaskHints>
+    <InteractiveExerciseTaskSolution>
+      Jede gezogene Kugel ist entweder gelb ($g$) oder nicht gelb ($n$).
+
+      Für das Ereignis $E$: „Eine der gezogenen Kugeln ist gelb.“ gilt: $P(E) = \frac{1}{3}$.
+
+      Das Ziehen der beiden Kugeln kann in einem zweistufigen Baumdiagramm dargestellt werden, in
+      dem zwei Pfade (($g$,$n$) und ($n$,$g$)) zum Ereignis $E$ gehören.
+      Da es sich um Ziehen ohne Zurücklegen handelt, hat jeder dieser beiden Pfade die
+      Pfadwahrscheinlichkeit $\frac{5}{n} \cdot \frac{n - 5}{n - 1}$, wobei $n$ die unbekannte
+      Anzahl der Kugeln beschreibt. Daraus ergibt sich die Gleichung
+
+      $$
+      2 \cdot \frac{5}{n} \cdot \frac{n - 5}{n - 1} = \frac{1}{3}.
+      $$
+
+    </InteractiveExerciseTaskSolution>
+  </InteractiveExerciseTask>
+</InteractiveExercise>
