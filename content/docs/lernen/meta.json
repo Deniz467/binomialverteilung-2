@@ -5,13 +5,13 @@
   "pages": [
     "---Bernoulli---",
     "index",
-    "---Sigma---",
-    "...(sigma)",
     "---Bedingte Wahrscheinlichkeit---",
     "(bedingte-wahrscheinlichkeit)/stochastische-abhaengigkeit",
     "...(bedingte-wahrscheinlichkeit)",
     "---Binomialverteilung---",
     "...(binomialverteilung)",
+    "---Sigma---",
+    "...(sigma)",
     "---Beispielaufgaben---",
     "...examples"
   ]
