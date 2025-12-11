@@ -13,12 +13,20 @@ import {
   InteractiveExerciseTaskHint,
   InteractiveExerciseTaskSolution,
 } from "../../../components/exercise/InteractiveExercise";
+import {GlucksradWheel} from "../../../components/illustrations/GlucksradWheel";
+
 
 <InteractiveExercise title="Ein Spiel mit dem Glücksrad">
 
   <InteractiveExerciseIntro>
     Die Sektoren des abgebildeten Glücksrads sind gleich groß und mit
     den Zahlen von $0$ bis $9$ beschriftet.
+
+    <div className="mb-6 flex justify-start">
+      <div className="rounded-xl border border-fd-border bg-fd-card px-4 py-3 shadow-sm">
+        <GlucksradWheel className="h-48 w-48" />
+      </div>
+    </div>
   </InteractiveExerciseIntro>
 
 
@@ -81,7 +89,8 @@ import {
 
     <InteractiveExerciseTaskHints>
       <InteractiveExerciseTaskHint number={1}>
-        Stellen Sie die Ergebnismenge aller möglichen Paare $(\text{erste Drehung}; \text{zweite Drehung})$
+        Stellen Sie die Ergebnismenge aller möglichen Paare $(\text{erste Drehung};
+        \text{zweite Drehung})$
         auf und markieren Sie, bei welchen Ergebnissen $C$ bzw. $D$ eintritt.
       </InteractiveExerciseTaskHint>
       <InteractiveExerciseTaskHint number={2}>
@@ -109,7 +118,8 @@ import {
     <InteractiveExerciseTaskPrompt>
       Mit dem Glücksrad wird ein Spiel durchgeführt. Jeder Spieler darf das Glücksrad beliebig oft
       drehen. Beendet er das Spiel selbst, bevor er eine „$0$“ erzielt, so wird ihm die Summe der
-      erzielten Zahlen in Euro ausgezahlt. Erzielt er eine „$0$“, so ist das Spiel dadurch beendet und
+      erzielten Zahlen in Euro ausgezahlt. Erzielt er eine „$0$“, so ist das Spiel dadurch beendet
+      und
       es erfolgt keine Auszahlung.
     </InteractiveExerciseTaskPrompt>
 
@@ -146,7 +156,8 @@ import {
     <InteractiveExerciseTaskPrompt>
       Mit dem Glücksrad wird ein Spiel durchgeführt. Jeder Spieler darf das Glücksrad beliebig oft
       drehen. Beendet er das Spiel selbst, bevor er eine „$0$“ erzielt, so wird ihm die Summe der
-      erzielten Zahlen in Euro ausgezahlt. Erzielt er eine „$0$“, so ist das Spiel dadurch beendet und
+      erzielten Zahlen in Euro ausgezahlt. Erzielt er eine „$0$“, so ist das Spiel dadurch beendet
+      und
       es erfolgt keine Auszahlung.
     </InteractiveExerciseTaskPrompt>
 
@@ -173,7 +184,7 @@ import {
       $$
       \begin{aligned}
       &5n \cdot \frac{9}{10} ^ n \\
-      &= 5n \cdot (n + 1) \cdot \frac{9}{10} ^{n+1} \\
+      &= 5n \cdot (n + 1) \cdot \frac{9}{10} ^{n + 1} \\
       &\Leftrightarrow n = 9
       \end{aligned}
       $$
