@@ -5,6 +5,8 @@ import {Metadata, Viewport} from "next";
 import {Analytics} from '@vercel/analytics/next';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import {Provider} from "@/app/provider";
+import {Body} from "@/app/layout.client";
+import {NextProvider} from "fumadocs-core/framework/next";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -56,11 +58,13 @@ export const metadata: Metadata = {
 export default function Layout({children}: LayoutProps<'/'>) {
   return (
       <html lang="de" className={inter.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
-      <Provider>{children}</Provider>
-      <Analytics />
-      <SpeedInsights />
-      </body>
+      <Body>
+        <NextProvider>
+          <Provider>{children}</Provider>
+          <Analytics/>
+          <SpeedInsights/>
+        </NextProvider>
+      </Body>
       </html>
   );
 }

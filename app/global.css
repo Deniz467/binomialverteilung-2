@@ -36,9 +36,9 @@
   --nd-graph-line: var(--color-green-600);
   --nd-graph-axis: var(--color-neutral-400);
 
-  --sigma-1: rgba(22, 163, 74, 0.18);  /* 1σ Bereich – kräftigstes Grün */
-  --sigma-2: rgba(22, 163, 74, 0.12);  /* 2σ */
-  --sigma-3: rgba(22, 163, 74, 0.06);  /* 3σ – sehr hell */
+  --sigma-1: rgba(22, 163, 74, 0.18);
+  --sigma-2: rgba(22, 163, 74, 0.12);
+  --sigma-3: rgba(22, 163, 74, 0.06);
   --sigma-line: var(--color-green-600);
   --sigma-axis: var(--color-neutral-400);
   --sigma-label: var(--color-fd-foreground);
@@ -91,7 +91,7 @@
 
 #nd-home-layout {
   #nd-nav {
-    @apply bg-background blur-none backdrop-blur-none;
+    /*@apply   outline-2 border-b transition-colors bg-fd-background/80;*/
 
     [data-theme-toggle] {
       margin-left: 4px;
@@ -104,9 +104,6 @@
 }
 
 #nd-nav {
-  border: none;
-  background-color: transparent;
-
   ul:first-of-type {
     padding-top: 4px;
     gap: 0;
@@ -123,7 +120,7 @@
   }
 
   [data-search-full] {
-    @apply bg-default/80 rounded-field;
+    @apply bg-default-hover rounded-field;
 
     kbd {
       @apply bg-surface text-muted px-1 font-sans text-xs font-medium;
@@ -136,10 +133,6 @@
 }
 
 #nd-subnav {
-  @apply bg-background h-14;
-
-  backdrop-filter: none;
-
   > div {
     @apply border-none px-6;
   }
@@ -491,6 +484,7 @@ code {
   .prose blockquote p:first-of-type::before {
     content: none !important;
   }
+
   .prose blockquote p:last-of-type::after {
     content: none !important;
   }
