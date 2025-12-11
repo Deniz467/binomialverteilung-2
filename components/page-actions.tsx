@@ -9,12 +9,6 @@ import {
 } from 'lucide-react';
 import {cn} from '@/lib/cn';
 import {useCopyButton} from 'fumadocs-ui/utils/use-copy-button';
-import {buttonVariants} from './ui/button';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from 'fumadocs-ui/components/ui/popover';
 import {cva} from 'class-variance-authority';
 import {Button, Dropdown, DropdownTrigger, Link} from "@heroui/react";
 
