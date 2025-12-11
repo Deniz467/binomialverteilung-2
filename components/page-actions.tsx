@@ -213,17 +213,17 @@ export function ViewOptions({
 
   return (
       <Dropdown>
-        <Dropdown.Trigger>
-          <Button variant="tertiary">
-            Open
-            <ChevronDown className="size-3.5 text-fd-muted-foreground"/>
-          </Button>
-        </Dropdown.Trigger>
+        <Button variant="tertiary">
+          Open
+          <ChevronDown className="size-3.5 text-fd-muted-foreground"/>
+        </Button>
         <Dropdown.Popover>
           <Dropdown.Menu>
             {items.map((item) => (
-                <Dropdown.Item>
-                  <Link href={item.href} rel="noreferrer noopener" target="_blank" key={item.href} className={cn("hover:bg-transparent focus:bg-transparent active:bg-transparent", optionVariants())} underline="none">
+                <Dropdown.Item key={item.href}>
+                  <Link href={item.href} rel="noreferrer noopener" target="_blank"
+                        className={cn(optionVariants())}
+                        underline="none">
                     {item.icon}
                     {item.title}
                     <ExternalLinkIcon className="text-fd-muted-foreground size-3.5 ms-auto"/>
