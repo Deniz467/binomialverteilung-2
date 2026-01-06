@@ -43,7 +43,7 @@ const direkteWege = [
 
 export default function HomePage() {
     return (
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 pb-16 text-left">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 pb-16 text-left pt-4">
             {/* Hero */}
             <section
                 className="relative overflow-hidden rounded-3xl border border-default-200 bg-content1/70 px-8 py-12 shadow-medium">

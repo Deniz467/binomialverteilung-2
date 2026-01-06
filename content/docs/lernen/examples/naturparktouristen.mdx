@@ -16,7 +16,7 @@ Im Folgenden werden diese Touristen als Radausflügler bezeichnet. Es soll davon
 dass in einer zufälligen Auswahl von Touristen des Naturparks die Anzahl der Radausflügler
 binomialverteilt ist.
 
-Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt.
+Für eine Stichprobe werden $300$ Touristen des Naturparks zufällig ausgewählt.
 
 <Accordion className="fd-content w-full max-w-4xl" variant="surface">
   <Accordion.Item>
@@ -176,9 +176,9 @@ Für eine Stichprobe werden $800$ Touristen des Naturparks zufällig ausgewählt
 </Accordion>
 
 
-Um den Naturpark als Reiseziel attraktiver zu machen, setzt der dortige Tourismusverband Shuttelbusse
-ein. Die Fahrkarten dür diese Busse können ausschließlich online gebucht werden und sind jeweils für
-einen bestimmten Tag gültig. Erfahrungsgemäß werden $80\,\%$ aller gebuchter Fahrkarten spätestens
+Um den Naturpark als Reiseziel attraktiver zu machen, setzt der dortige Tourismusverband Shuttlebusse
+ein. Die Fahrkarten für diese Busse können ausschließlich online gebucht werden und sind jeweils für
+einen bestimmten Tag gültig. Erfahrungsgemäß werden $80\,\%$ aller gebuchten Fahrkarten spätestens
 am Vortag der Fahrt gebucht. Von diesen spätestens am Vortag gebuchten Fahrkarten werden $90\,\%$
 auch täglich genutzt. Bei den restlichen, erst am Tag der Fahrt gebuchten Fahrkarten liegt der
 Anteil mit $95\,\%$ etwas höher.
@@ -235,7 +235,7 @@ Anteil mit $95\,\%$ etwas höher.
 
         <Steps>
           <Step>
-            ### Ereignisse festlegen und bekannt Wahrscheinlichkeiten nutzen
+            ### Ereignisse festlegen und bekannte Wahrscheinlichkeiten nutzen
             Wir verwenden die Ereignisse aus dem Baumdiagramm:
 
             - $B_V$: Fahrkarte wurde spätestens am Vortag gebucht
@@ -286,7 +286,7 @@ Anteil mit $95\,\%$ etwas höher.
             P(B_V \mid N) &= \frac{P(B_V \cap N)} {P(N)} &= \frac{0.08}{0.09} &=
             \frac{8}{9} &\approx
             0.8889 \\
-            P(B_T \mid N) &= \frac {P(B_V)}{P(N)} &= \frac {0.01}{0.09} &= \frac {1} {9} &\approx
+            P(B_T \mid N) &= \frac {P(B_T \cap N)}{P(N)} &= \frac {0.01}{0.09} &= \frac {1} {9} &\approx
             0.1111
             \end{aligned}
             $$
@@ -313,7 +313,7 @@ Anteil mit $95\,\%$ etwas höher.
               spätestens am Vortag gebucht wurde, ist tatsächlich **achtmal so groß** wie die
               Wahrscheinlichkeit, dass sie erst am Tag der Fahrt gebucht wurde.
 
-              Die gegeben Aussage ist also **richtig**.
+              Die gegebe Aussage ist also **richtig**.
             </Callout>
           </Step>
         </Steps>
